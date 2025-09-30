@@ -1,0 +1,1836 @@
+{
+  "name": "LineOA",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "request",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -880,
+        272
+      ],
+      "id": "091c26a5-ea79-47c5-bbaa-cb49b06c672a",
+      "name": "Webhook",
+      "webhookId": "58010509-2766-4f8e-97c7-da93693cdeb4"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.output.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() || 'An error occurred, please try again.' }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2112,
+        208
+      ],
+      "id": "4f77b03a-0259-4363-b8ab-44231d8db97a",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $('message').item.json.message }}",
+        "options": {
+          "systemMessage": "=คุณคือ Co-Pilot AI ผู้เชี่ยวชาญและผู้ช่วยสำหรับเจ้าของธุรกิจร้านอาหารและคาเฟ่ (SME) ในไทย\n\nเป้าหมายหลักของคุณคือการให้คำแนะนำที่นำไปใช้ได้จริงและเข้าใจง่าย เพื่อช่วยให้พวกเขา ลดต้นทุน, เพิ่มยอดขาย, และบริหารธุรกิจ ได้อย่างมีประสิทธิภาพ\n\nขอบเขตความเชี่ยวชาญ\nคุณจะตอบเฉพาะคำถามที่เกี่ยวกับ 4 ด้านนี้เท่านั้น:\n\n💡 การตลาด: กลยุทธ์โซเชียลมีเดียต้นทุนต่ำ, โปรโมชัน, การรักษาลูกค้า, การออกแบบเมนูเพื่อการขาย\n💰 การจัดการต้นทุน: การหาแหล่งวัตถุดิบ, การลดขยะ, การควบคุมสต็อก, การคำนวณต้นทุนอาหาร\n📈 การดำเนินงาน: เทคนิคจัดการสต็อก (เช่น FIFO), การหาซัพพลายเออร์ในพื้นที่, การเพิ่มประสิทธิภาพการจัดส่ง\n🛒 การเงินเบื้องต้น: การวิเคราะห์กำไรขาดทุนเบื้องต้น, เคล็ดลับการเพิ่มสภาพคล่องทางการเงิน\n\nกฎการตอบกลับ\n[ภาษาและน้ำเสียง]\nตอบเป็นภาษาไทยเสมอ ด้วยน้ำเสียงที่เป็นมิตร ให้กำลังใจ เหมือนเป็นที่ปรึกษา แต่ยังคงความเป็นมืออาชีพ หลีกเลี่ยงศัพท์เทคนิคที่ซับซ้อนเกินไป\n\n[โครงสร้างและการจัดรูปแบบสำหรับ LINE]\nทุกคำตอบต้องจัดรูปแบบเพื่อให้อ่านง่ายบนมือถือ:\n🔸 ขึ้นต้นด้วยหัวข้อหลักในวงเล็บ เช่น [หัวข้อ]\n🔸 ใช้ Emoji 💡💰📈🛒 นำหน้าประเด็นย่อย\n🔸 ใช้ย่อหน้าสั้นๆ (ไม่เกิน 2-3 ประโยค) และขึ้นบรรทัดใหม่บ่อยๆ\n🔸 จบด้วยการสรุปให้กำลังใจหรือคำถามสั้นๆ เพื่อกระตุ้นการสนทนา\n\n[ข้อจำกัดสำคัญ]\n🔸 หากคำถามอยู่นอกขอบเขตความเชี่ยวชาญ 4 ด้านข้างต้น ให้ปฏิเสธอย่างสุภาพว่า \"เรื่องนี้อยู่นอกเหนือความเชี่ยวชาญของ Co-Pilot AI ครับ/ค่ะ\" และแนะนำให้ปรึกษาผู้เชี่ยวชาญโดยตรง\n🔸 ห้าม ให้คำแนะนำทางการแพทย์, กฎหมาย, หรือการลงทุนทางการเงินเด็ดขาด"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        1552,
+        208
+      ],
+      "id": "111b66b9-2ce9-4361-858a-a01d834b8709",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        1552,
+        400
+      ],
+      "id": "c7a309cd-2d87-413e-aa11-08e24e38bc81",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "lkm6vBqqpUOcz2ww",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        176,
+        656
+      ],
+      "id": "3877e0c3-18b4-49c4-a5cd-020e5a585e23",
+      "name": "Google Gemini Chat Model1",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "lkm6vBqqpUOcz2ww",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "dcee9191-38b1-4b95-8f2b-c1606569f942",
+                    "leftValue": "={{ $json.output.intent }}",
+                    "rightValue": "GREETING",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ce6452f8-f0a3-4554-ade4-a56c180b0c59",
+                    "leftValue": "={{ $json.output.intent }}",
+                    "rightValue": "AI_CONSULT",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "2faeb9d7-6108-4881-aad6-c9ac06927d96",
+                    "leftValue": "={{ $json.output.intent }}",
+                    "rightValue": "FAQ",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.output.intent }}",
+                    "rightValue": "OTHER",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f5751c45-db5b-4d50-b078-acac5d6d4db1"
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        608,
+        256
+      ],
+      "id": "1bf317d7-50e3-4ada-8fa9-9cd75fe0683a",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=You are an expert intent classifier for a business assistant chatbot for F&B SMEs named 'F&B SME Co-Pilot'.\nYour task is to analyze the user's message and classify it into one of the following categories.\nRespond ONLY with a JSON object containing the determined intent.\n\nHere are the possible intents and their definitions:\n\n- AI_CONSULT: User is asking for **in-depth, personalized business advice** that requires analysis of their specific situation. This is for questions that cannot be answered with a general guide.\n\n- FAQ: User is asking a general question about the service itself, **OR a common, general business question** that could likely be answered from a knowledge base.\n\n- GREETING: User is saying hello, thank you, or other pleasantries.\n\n- OTHER: The user's request does not fit into any of the above categories.\n\n**Decision-making examples to guide you:**\n- If the user asks \"How do I do marketing online?\", classify as **FAQ**. (This is a general question)\n- If the user asks \"Can you give me a marketing plan for my new fried chicken shop in Ari?\", classify as **AI_CONSULT**. (This is a personalized request)\n- If the user asks \"What are some ways to reduce costs?\", classify as **FAQ**. (This is a general question)\n- If the user asks \"My ingredient cost is 35%, how can I lower it?\", classify as **AI_CONSULT**. (This requires analysis of specific data)\n\nUser's message: \"{{ $json.message }}\"\n\nJSON Response:",
+        "hasOutputParser": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        272
+      ],
+      "id": "f1fac6f3-9fb2-4410-b791-0416a70064ef",
+      "name": "filter intent"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "a2b94504-d596-4368-94ed-1e5974ef89ad",
+              "name": "replyMessage",
+              "value": "สวัสดีครับ F&B Co-Pilot ยินดีให้บริการ มีอะไรให้ช่วยสอบถามได้เลยครับ 😊",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        -96
+      ],
+      "id": "8668ab77-bdce-477c-989a-69be60999010",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.replyMessage }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1168,
+        -96
+      ],
+      "id": "86098bff-eea6-417d-8b68-2eac5841670c",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('message').item.json.userId }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        1760,
+        528
+      ],
+      "id": "8a4cde98-f89f-465f-a0c0-953cfe5b0229",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1121208006,
+          "mode": "list",
+          "cachedResultName": " faq คำถาม-ตอบ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1121208006"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        816,
+        528
+      ],
+      "id": "49b14a59-0c24-4450-974e-4b6a5e124f11",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": false,
+      "notesInFlow": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsonSchemaExample": "{\n\t\"intent\": \"The classified intent of the user's message. Must be one of: AI_CONSULT, FAQ, GREETING, OTHER.\"\n}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "typeVersion": 1.3,
+      "position": [
+        368,
+        576
+      ],
+      "id": "54929338-47d3-4ac5-a5bf-2afcecb0f611",
+      "name": "Structured Output Parser"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.Answer.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1744,
+        768
+      ],
+      "id": "9d578f9d-510f-4da3-b89a-19bdd2e5551c",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"กำลังจะค้นหาร้านค้าใกล้เคียงให้ครับ 🧐\\n\\nกรุณากดปุ่มด้านล่าง หรือแชร์ตำแหน่งที่ตั้ง (Location) ของคุณได้เลยครับ\",\n      \"quickReply\": {\n        \"items\": [\n          {\n            \"type\": \"action\",\n            \"action\": {\n              \"type\": \"location\",\n              \"label\": \"📍 ส่งตำแหน่งที่ตั้งปัจจุบัน\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        128,
+        1232
+      ],
+      "id": "df12173b-ed04-49f6-8254-2fb1f071409a",
+      "name": "request location"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "76da3b8c-e07f-4204-97d3-93ca015f8b5f",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "4640f69b-2eef-4f67-8443-fb39518836d8",
+              "leftValue": "={{ $json.category }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -304,
+        976
+      ],
+      "id": "6343b155-1cae-4df9-8f7a-8666f7e78226",
+      "name": "information"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b4f15148-7ac6-4d91-a685-9aee41e250f1",
+              "leftValue": "={{ $('Get row by uid').item.json.lat.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "ef591cfe-55c7-400e-be24-45e459774211",
+              "leftValue": "={{ $('Get row by uid').item.json.lon.toString() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        32,
+        960
+      ],
+      "id": "9f0e21bc-2913-4f18-8749-a037beace031",
+      "name": "location"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ยินดีต้อนรับสู่ F&B Co-Pilot ครับ! 😊\\n\\nก่อนเริ่มใช้งานฟีเจอร์รวมกลุ่มซื้อ ขอรบกวนคุณลงทะเบียนร้านค้าสั้นๆ ก่อนนะครับ\"\n    },\n    {\n      \"type\": \"text\",\n      \"text\": \"กรุณาพิมพ์ตอบกลับมาในรูปแบบนี้ครับ:\\n#ลงทะเบียน ชื่อร้านของคุณ, ประเภทร้าน\\n\\nตัวอย่าง:\\n#ลงทะเบียน ร้านเจ๊ไฝโอมากาเสะ, อาหารตามสั่ง\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -688,
+        1360
+      ],
+      "id": "ff5df18f-e6fd-484b-862a-4f15c9884088",
+      "name": "request location1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2732ac41-6df2-4362-8600-a0f1e5a65934",
+              "name": "userId",
+              "value": "={{ $json.body.events[0].source.userId }}",
+              "type": "string"
+            },
+            {
+              "id": "97361a7c-d326-4f64-8c53-10a155007553",
+              "name": "message",
+              "value": "={{ $json.body.events[0].message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "2872dd3e-180c-498a-93df-36b503fa4d09",
+              "name": "replyToken",
+              "value": "={{ $json.body.events[0].replyToken }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -624,
+        272
+      ],
+      "id": "6cea8a7f-d86f-4603-9e41-16bf50b4f8dc",
+      "name": "message"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message }}",
+                    "rightValue": "#ลงทะเบียน",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    },
+                    "id": "c7699805-8af1-4a38-bb88-84efbba588ca"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "5b9a8970-fcbf-42f6-ae1b-33c7139c8112",
+                    "leftValue": "={{ $('Webhook').item.json.body.events[0].message.type }}",
+                    "rightValue": "location",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c63a5828-f973-43bb-8033-ed5627722e58",
+                    "leftValue": "={{ $json.message }}",
+                    "rightValue": "#ลงทะเบียน",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notStartsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -416,
+        272
+      ],
+      "id": "ddf87bf8-9ad3-4fbc-b0da-f4594df3c8d1",
+      "name": "Switch2"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1196391735,
+          "mode": "list",
+          "cachedResultName": "location",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "name": "={{ $json.store_name }}",
+            "category": "={{ $json.store_type }}",
+            "uid": "={{ $('message').item.json.userId }}"
+          },
+          "matchingColumns": [
+            "uid"
+          ],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lat",
+              "displayName": "lat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lon",
+              "displayName": "lon",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category",
+              "displayName": "category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -48,
+        -352
+      ],
+      "id": "9607839e-dfb5-4d9b-bebb-860875880db5",
+      "name": "Append or update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// 1. ดึงข้อความเต็มๆ จาก Webhook Trigger\n// (ใช้ $('Webhook') เพื่อความแน่นอนว่าจะได้ข้อมูลจากจุดเริ่มต้นเสมอ)\nconst fullMessage = $input.first().json.message\n\n// 2. ตัดคำว่า \"#ลงทะเบียน\" และช่องว่างข้างหน้าออกไป\nconst dataString = fullMessage.replace('#ลงทะเบียน', '').trim();\n\n// 3. แยกข้อความด้วยเครื่องหมาย \",\"\nconst parts = dataString.split(',');\n\n// 4. ตรวจสอบว่าผู้ใช้พิมพ์มาถูกรูปแบบหรือไม่ (ควรจะมี 2 ส่วน)\nif (parts.length !== 2) {\n  // ถ้าไม่ถูกรูปแบบ ให้ส่งค่าว่างออกไป เพื่อให้ Workflow หยุดทำงานที่นี่\n  // ป้องกันการบันทึกข้อมูลผิดๆ ลง Database\n  return null; \n}\n\n// 5. ทำความสะอาดข้อมูลแต่ละส่วน (ตัดช่องว่าง) และกำหนดค่าให้ตัวแปร\nconst storeName = parts[0].trim();\nconst storeType = parts[1].trim();\n\n// 6. สร้าง Object ใหม่เพื่อส่งข้อมูลออกไปให้ Node ถัดไปใช้\nconst item = {};\nitem.store_name = storeName;\nitem.store_type = storeType;\n\n// ส่งข้อมูลออกไป\nreturn item;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -352,
+        -144
+      ],
+      "id": "d40f754f-6bfc-42f8-b8d5-7f3ef775b76f",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1196391735,
+          "mode": "list",
+          "cachedResultName": "location",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "uid": "={{ $('message').item.json.userId }}",
+            "lat": "={{ $('Webhook').item.json.body.events[0].message.latitude }}",
+            "lon": "={{ $('Webhook').item.json.body.events[0].message.longitude }}",
+            "address": "={{ $('Webhook').item.json.body.events[0].message.address }}"
+          },
+          "matchingColumns": [
+            "uid"
+          ],
+          "schema": [
+            {
+              "id": "uid",
+              "displayName": "uid",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "lat",
+              "displayName": "lat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "lon",
+              "displayName": "lon",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "address",
+              "displayName": "address",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category",
+              "displayName": "category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -48,
+        -96
+      ],
+      "id": "9e5ece28-eed0-40da-b9bb-c23ac478d80f",
+      "name": "Append or update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('message').item.json.message }}",
+                    "rightValue": "Group Purchase Function",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "ef822b7f-2dd0-4d9a-bf12-af03c598d552"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "88a2434c-c98c-4350-9380-88df7c535045",
+                    "leftValue": "={{ $('message').item.json.message }}",
+                    "rightValue": "Collaboration Engine Function",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        496,
+        944
+      ],
+      "id": "a0db6fc1-44b0-4561-a3c3-6273d65c1b4b",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "45d8ff4f-e876-49cd-9a0f-ec6004a3e910",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "Group Purchase Function",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "d0c40ed1-909d-422d-9361-b79c2ed4345e",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "Collaboration Engine Function",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        272
+      ],
+      "id": "fc56b2e0-965f-4dbc-8f9e-ee6ecbdf5ecb",
+      "name": "spreate"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1196391735,
+          "mode": "list",
+          "cachedResultName": "location",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "uid",
+              "lookupValue": "={{ $json.userId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -768,
+        976
+      ],
+      "id": "d63f1b2d-3b6d-457a-b0c7-38419a0e5bfd",
+      "name": "Get row by uid",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1196391735,
+          "mode": "list",
+          "cachedResultName": "location buyer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        768,
+        1264
+      ],
+      "id": "d50fe1bf-fe81-4c19-abf6-483a0eb0b342",
+      "name": "Get all user",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aea37d81-e1af-4a5f-9a34-326fb65b2a22",
+              "leftValue": "={{ $json.Keyword }}",
+              "rightValue": "={{ $('Webhook').item.json.body.events[0].message.text }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1312,
+        624
+      ],
+      "id": "f988204a-3022-45ee-9851-e12d8a89c561",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.text_message.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1648,
+        1312
+      ],
+      "id": "10c14273-a9a8-4ab6-a06b-9188c6467a8a",
+      "name": "request location2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const stores = $input.all();\n\n// สร้าง \"Bubble\" (การ์ดแต่ละใบ) สำหรับแต่ละร้านค้า\nconst bubbles = stores.map(item => {\n  const store = item.json;\n  return {\n    \"type\": \"bubble\",\n    \"body\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"contents\": [\n        { \"type\": \"text\", \"text\": store.name, \"weight\": \"bold\", \"size\": \"xl\" },\n        {\n          \"type\": \"box\",\n          \"layout\": \"vertical\",\n          \"margin\": \"lg\",\n          \"spacing\": \"sm\",\n          \"contents\": [\n            {\n              \"type\": \"box\",\n              \"layout\": \"baseline\",\n              \"spacing\": \"sm\",\n              \"contents\": [\n                { \"type\": \"text\", \"text\": \"ระยะทาง\", \"color\": \"#aaaaaa\", \"size\": \"sm\", \"flex\": 2 },\n                { \"type\": \"text\", \"text\": `${store.distance} กม.`, \"wrap\": true, \"color\": \"#666666\", \"size\": \"sm\", \"flex\": 5 }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"footer\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"spacing\": \"sm\",\n      \"contents\": [\n        {\n          \"type\": \"button\",\n          \"style\": \"link\",\n          \"height\": \"sm\",\n          \"action\": {\n            \"type\": \"postback\",\n            \"label\": \"เลือกร้านนี้\",\n            \"data\": `action=select_store&uid=${store.uid}`,\n            \"displayText\": `ฉันเลือกร้าน ${store.name}`\n          }\n        }\n      ]\n    }\n  };\n});\n\n// สร้างโครง Flex Message แบบ Carousel ทั้งหมด\nconst flexMessage = {\n  \"type\": \"flex\",\n  \"altText\": \"นี่คือรายชื่อร้านค้าใกล้เคียงครับ\",\n  \"contents\": {\n    \"type\": \"carousel\",\n    \"contents\": bubbles\n  }\n};\n\n// ส่งออกผลลัพธ์เป็น Object ที่มี key ชื่อ flex\nreturn { flex: flexMessage };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1248,
+        1808
+      ],
+      "id": "fe9e8848-6616-4ce5-ae98-92d12ccea8cf",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {{ $json.flex }}\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1536,
+        1808
+      ],
+      "id": "d9d39d42-067e-4985-9685-d23697031117",
+      "name": "request location3"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 482203547,
+          "mode": "list",
+          "cachedResultName": "location seller",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=482203547"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        768,
+        832
+      ],
+      "id": "157f46c6-31e6-49e0-8e95-e81dd405c9fa",
+      "name": "GetAllSuppliers",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ฟังก์ชันคำนวณระยะทาง (Haversine formula) - เหมือนเดิม\nfunction getDistance(lat1, lon1, lat2, lon2) {\n  const R = 6371; // รัศมีของโลก (กม.)\n  const dLat = (lat2 - lat1) * (Math.PI / 180);\n  const dLon = (lon2 - lon1) * (Math.PI / 180);\n  const a =\n    Math.sin(dLat / 2) * Math.sin(dLat / 2) +\n    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *\n    Math.sin(dLon / 2) * Math.sin(dLon / 2);\n  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n  const d = R * c; // ระยะทาง (กม.)\n  return d;\n}\n\n// 1. ดึงข้อมูลตำแหน่งร้านค้าของผู้ใช้จาก Node 'GetUserProfile'\nconst userProfile = $('Get user').first().json\nconst userLat = userProfile.lat;\nconst userLon = userProfile.lon;\n\n\n// 2. ดึงข้อมูลซัพพลายเออร์ทั้งหมด\nconst allSuppliers = $('GetAllSuppliers').all()\n\n// 3. คำนวณ, กรอง, และเรียงลำดับซัพพลายเออร์\nconst nearbySuppliers = allSuppliers\n  .map(item => {\n    const supplier = item.json;\n    const distance = getDistance(userLat, userLon, parseFloat(supplier.lat), parseFloat(supplier.lon));\n\n    // ส่งกลับข้อมูลที่จำเป็นทั้งหมด\n    return { \n      name: supplier.name,\n      type: supplier.product_type,\n      distance: distance.toFixed(2) // ปัดเศษทศนิยม 2 ตำแหน่ง\n    };\n  })\n  .sort((a, b) => a.distance - b.distance); // เรียงจากใกล้ไปไกล\n\n// 4. ส่งออกผลลัพธ์\nreturn nearbySuppliers;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1328,
+        944
+      ],
+      "id": "8af17364-6026-4f15-bfa2-5cb0ee275677",
+      "name": "Code in JavaScript4",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1196391735,
+          "mode": "list",
+          "cachedResultName": "location buyer",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
+        },
+        "filtersUI": {
+          "values": [
+            {
+              "lookupColumn": "uid",
+              "lookupValue": "={{ $('message').item.json.userId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        768,
+        1008
+      ],
+      "id": "45f0188a-894e-4d65-ad3b-4d7f055b46bc",
+      "name": "Get user",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "pRUZf8vvWP8FW3os",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// รับข้อมูลซัพพลายเออร์ที่กรองและเรียงลำดับแล้ว\nconst suppliers = $input.all();\n\n// 1. สร้างส่วนหัวของข้อความ\nlet message = `พบซัพพลายเออร์ใกล้เคียง ${suppliers.length} แห่ง:\\n\\n`;\n\n// 2. วนลูปเพื่อสร้างรายการแต่ละเจ้า\nsuppliers.forEach((item, index) => {\n  const supplier = item.json;\n  // เพิ่มเลขลำดับ, ชื่อ, ประเภทสินค้า, และระยะทาง\n  message += `${index + 1}. ${supplier.name} - ${supplier.type} (${supplier.distance} กม.)\\n`;\n});\n\n// 3. เพิ่มส่วนท้ายของข้อความ (Call to Action)\nmessage += \"\\nหากสนใจซัพพลายเออร์รายใด สามารถพิมพ์ชื่อเพื่อขอรายละเอียดเพิ่มเติมได้ครับ\";\n\n// 4. ส่งออกผลลัพธ์\nreturn { text_message: message };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1536,
+        944
+      ],
+      "id": "adcd8b11-9d48-4444-9ecf-a488db33f88d",
+      "name": "Code in JavaScript5"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.text_message.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1776,
+        960
+      ],
+      "id": "f06c3dfb-8b82-4491-8e7e-e0a7872653f2",
+      "name": "request location4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1072,
+        944
+      ],
+      "id": "12751582-6a5f-42d6-80ad-f5685d04a1c6",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2a9424a3-e984-4311-8357-be12f9f79b1c",
+              "leftValue": "={{ $json.Keyword }}",
+              "rightValue": "={{ $('message').item.json.message }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        1072,
+        576
+      ],
+      "id": "7ab47f75-9a2b-4a8d-b6be-683fed508ed5",
+      "name": "Filter",
+      "alwaysOutputData": true,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "jsCode": "const stores = $input.all();\n\n// 1. สร้างส่วนหัวของข้อความ\nlet message = `พบร้านค้าใกล้เคียง ${stores.length} แห่ง:\\n\\n`;\n\n// 2. วนลูปเพื่อสร้างรายการแต่ละร้านค้า\nstores.forEach((item, index) => {\n  const store = item.json;\n  // เพิ่มเลขลำดับ, ชื่อร้าน, และระยะทาง\n  message += `${index + 1}. ${store.name} (${store.distance} กม.)\\n`;\n});\n\n// 3. เพิ่มส่วนท้ายของข้อความ\nmessage += \"\\nกรุณาพิมพ์ชื่อร้านค้าที่ท่านต้องการเลือกร่วมโครงการครับ\";\n\n// 4. ส่งออกผลลัพธ์\nreturn { text_message: message };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1440,
+        1312
+      ],
+      "id": "f5c659b9-5852-46ee-8595-32cdabbc7a6e",
+      "name": "collaboration"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ขออภัยครับ 😥 ขณะนี้ยังไม่มีร้านค้าอื่นในบริเวณใกล้เคียงเข้าร่วมโครงการเลยครับ ลองค้นหาใหม่อีกครั้งในภายหลังนะครับ\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1504,
+        1584
+      ],
+      "id": "991f87b7-77da-458f-b23b-15b26d4ce835",
+      "name": "request location5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ฟังก์ชันคำนวณระยะทาง (Haversine formula)\nfunction getDistance(lat1, lon1, lat2, lon2) {\n  const R = 6371;\n  const dLat = (lat2 - lat1) * (Math.PI / 180);\n  const dLon = (lon2 - lon1) * (Math.PI / 180);\n  const a =\n    Math.sin(dLat / 2) * Math.sin(dLat / 2) +\n    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *\n    Math.sin(dLon / 2) * Math.sin(dLon / 2);\n  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n  const d = R * c;\n  return d;\n}\n\n// 1. ดึงตำแหน่งที่ตั้งของผู้ใช้ออกมาจาก Trigger\nconst userLat = $input.first().json.lat\nconst userLon = $input.first().json.lon\n\n// 2. ดึงข้อมูลร้านค้าทั้งหมดที่มาจาก Node ก่อนหน้า (Google Sheets)\n\nconst currentUserStoreName = $input.first().json.uid\nconst allStores = $input.all()\n\n// 3. คำนวณและกรองร้านค้าที่อยู่ในรัศมี 5 กิโลเมตร\nconst nearbyStores = allStores\n  .map(item => {\n    const store = item.json;\n    const distance = getDistance(userLat, userLon, parseFloat(store.lat), parseFloat(store.lon));\n\n    return { \n      uid: store.uid,\n      name: store.name,\n      distance: distance.toFixed(2) \n    };\n  })\n  .filter(store => store.distance <= 5 && store.uid !== currentUserStoreName) // กรองร้านที่ใกล้กว่า 5 กม.\n  .sort((a, b) => a.distance - b.distance); // เรียงจากใกล้ไปไกล\n\n// 4. ส่งออกผลลัพธ์\nreturn nearbyStores;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1088,
+        1264
+      ],
+      "id": "670cc4b3-fcf0-4bd4-a8a8-70402543dca0",
+      "name": "findShop",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5fb428c7-6540-445c-aaa0-4f18e540da3f",
+              "leftValue": "={{ $('findShop').item.json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1216,
+        1456
+      ],
+      "id": "30016c21-d5e7-4b0c-a491-f2bcff2aaa6d",
+      "name": "If empty"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "filter intent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "filter intent": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Structured Output Parser": {
+      "ai_outputParser": [
+        [
+          {
+            "node": "filter intent",
+            "type": "ai_outputParser",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "information": {
+      "main": [
+        [
+          {
+            "node": "location",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "request location1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "message": {
+      "main": [
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append or update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "spreate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Append or update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "location": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "request location",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "spreate": {
+      "main": [
+        [
+          {
+            "node": "Get row by uid",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "filter intent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Get user",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "GetAllSuppliers",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get all user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row by uid": {
+      "main": [
+        [
+          {
+            "node": "information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get all user": {
+      "main": [
+        [
+          {
+            "node": "findShop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        []
+      ]
+    },
+    "GetAllSuppliers": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get user": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript5": {
+      "main": [
+        [
+          {
+            "node": "request location4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter": {
+      "main": [
+        []
+      ]
+    },
+    "collaboration": {
+      "main": [
+        [
+          {
+            "node": "request location2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "findShop": {
+      "main": [
+        [
+          {
+            "node": "If empty",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If empty": {
+      "main": [
+        [
+          {
+            "node": "request location5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "collaboration",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "versionId": "fad09168-c58e-484c-8394-a75daaa307bc",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "9e6c3dae460c2911444cecc336cb660f385e1346a8617131ff4d30da80e0fab4"
+  },
+  "id": "JFpn4LyroVdmwSSV",
+  "tags": []
+}
