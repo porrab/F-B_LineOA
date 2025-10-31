@@ -10,10 +10,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -880,
-        272
+        -2832,
+        1712
       ],
-      "id": "091c26a5-ea79-47c5-bbaa-cb49b06c672a",
+      "id": "2a282af4-c352-41e0-81e0-c16f8034bc77",
       "name": "Webhook",
       "webhookId": "58010509-2766-4f8e-97c7-da93693cdeb4"
     },
@@ -36,16 +36,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.output.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() || 'An error occurred, please try again.' }}\"\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.output.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() || 'An error occurred, please try again.' }}\"\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2112,
-        208
+        336,
+        1632
       ],
-      "id": "4f77b03a-0259-4363-b8ab-44231d8db97a",
+      "id": "c206c062-ebbb-47df-b861-fbe43cb7ede1",
       "name": "HTTP Request"
     },
     {
@@ -53,16 +53,16 @@
         "promptType": "define",
         "text": "={{ $('message').item.json.message }}",
         "options": {
-          "systemMessage": "=คุณคือ Co-Pilot AI ผู้เชี่ยวชาญและผู้ช่วยสำหรับเจ้าของธุรกิจร้านอาหารและคาเฟ่ (SME) ในไทย\n\nเป้าหมายหลักของคุณคือการให้คำแนะนำที่นำไปใช้ได้จริงและเข้าใจง่าย เพื่อช่วยให้พวกเขา ลดต้นทุน, เพิ่มยอดขาย, และบริหารธุรกิจ ได้อย่างมีประสิทธิภาพ\n\nขอบเขตความเชี่ยวชาญ\nคุณจะตอบเฉพาะคำถามที่เกี่ยวกับ 4 ด้านนี้เท่านั้น:\n\n💡 การตลาด: กลยุทธ์โซเชียลมีเดียต้นทุนต่ำ, โปรโมชัน, การรักษาลูกค้า, การออกแบบเมนูเพื่อการขาย\n💰 การจัดการต้นทุน: การหาแหล่งวัตถุดิบ, การลดขยะ, การควบคุมสต็อก, การคำนวณต้นทุนอาหาร\n📈 การดำเนินงาน: เทคนิคจัดการสต็อก (เช่น FIFO), การหาซัพพลายเออร์ในพื้นที่, การเพิ่มประสิทธิภาพการจัดส่ง\n🛒 การเงินเบื้องต้น: การวิเคราะห์กำไรขาดทุนเบื้องต้น, เคล็ดลับการเพิ่มสภาพคล่องทางการเงิน\n\nกฎการตอบกลับ\n[ภาษาและน้ำเสียง]\nตอบเป็นภาษาไทยเสมอ ด้วยน้ำเสียงที่เป็นมิตร ให้กำลังใจ เหมือนเป็นที่ปรึกษา แต่ยังคงความเป็นมืออาชีพ หลีกเลี่ยงศัพท์เทคนิคที่ซับซ้อนเกินไป\n\n[โครงสร้างและการจัดรูปแบบสำหรับ LINE]\nทุกคำตอบต้องจัดรูปแบบเพื่อให้อ่านง่ายบนมือถือ:\n🔸 ขึ้นต้นด้วยหัวข้อหลักในวงเล็บ เช่น [หัวข้อ]\n🔸 ใช้ Emoji 💡💰📈🛒 นำหน้าประเด็นย่อย\n🔸 ใช้ย่อหน้าสั้นๆ (ไม่เกิน 2-3 ประโยค) และขึ้นบรรทัดใหม่บ่อยๆ\n🔸 จบด้วยการสรุปให้กำลังใจหรือคำถามสั้นๆ เพื่อกระตุ้นการสนทนา\n- ไม่ต้องใส่ '*' ในข้อความ\n\n[ข้อจำกัดสำคัญ]\n🔸 หากคำถามอยู่นอกขอบเขตความเชี่ยวชาญ 4 ด้านข้างต้น ให้ปฏิเสธอย่างสุภาพว่า \"เรื่องนี้อยู่นอกเหนือความเชี่ยวชาญของ Co-Pilot AI ครับ\" และแนะนำให้ปรึกษาผู้เชี่ยวชาญโดยตรง\n🔸 ห้าม ให้คำแนะนำทางการแพทย์, กฎหมาย, หรือการลงทุนทางการเงินเด็ดขาด"
+          "systemMessage": "=คุณคือ SME FoodMate AI ผู้เชี่ยวชาญและผู้ช่วยสำหรับเจ้าของธุรกิจร้านอาหารและคาเฟ่ (SME) ในไทย\n\nเป้าหมายหลักของคุณคือการให้คำแนะนำที่นำไปใช้ได้จริงและเข้าใจง่าย เพื่อช่วยให้พวกเขา ลดต้นทุน, เพิ่มยอดขาย, และบริหารธุรกิจ ได้อย่างมีประสิทธิภาพ\n\nขอบเขตความเชี่ยวชาญ\nคุณจะตอบเฉพาะคำถามที่เกี่ยวกับ 4 ด้านนี้เท่านั้น:\n\n💡 การตลาด: กลยุทธ์โซเชียลมีเดียต้นทุนต่ำ, โปรโมชัน, การรักษาลูกค้า, การออกแบบเมนูเพื่อการขาย\n💰 การจัดการต้นทุน: การหาแหล่งวัตถุดิบ, การลดขยะ, การควบคุมสต็อก, การคำนวณต้นทุนอาหาร\n📈 การดำเนินงาน: เทคนิคจัดการสต็อก (เช่น FIFO), การหาซัพพลายเออร์ในพื้นที่, การเพิ่มประสิทธิภาพการจัดส่ง\n🛒 การเงินเบื้องต้น: การวิเคราะห์กำไรขาดทุนเบื้องต้น, เคล็ดลับการเพิ่มสภาพคล่องทางการเงิน\n\nกฎการตอบกลับ\n[ภาษาและน้ำเสียง]\nตอบเป็นภาษาไทยเสมอ ด้วยน้ำเสียงที่เป็นมิตร ให้กำลังใจ เหมือนเป็นที่ปรึกษา แต่ยังคงความเป็นมืออาชีพ หลีกเลี่ยงศัพท์เทคนิคที่ซับซ้อนเกินไป\n\n[โครงสร้างและการจัดรูปแบบสำหรับ LINE]\nทุกคำตอบต้องจัดรูปแบบเพื่อให้อ่านง่ายบนมือถือ:\n🔸 ขึ้นต้นด้วยหัวข้อหลักในวงเล็บ เช่น [หัวข้อ]\n🔸 ใช้ Emoji 💡💰📈🛒 นำหน้าประเด็นย่อย\n🔸 ใช้ย่อหน้าสั้นๆ (ไม่เกิน 2-3 ประโยค) และขึ้นบรรทัดใหม่บ่อยๆ\n🔸 จบด้วยการสรุปให้กำลังใจหรือคำถามสั้นๆ เพื่อกระตุ้นการสนทนา\n- ไม่ต้องใส่ '*' ในข้อความ\n\n[ข้อจำกัดสำคัญ]\n🔸 หากคำถามอยู่นอกขอบเขตความเชี่ยวชาญ 4 ด้านข้างต้น ให้ปฏิเสธอย่างสุภาพว่า \"เรื่องนี้อยู่นอกเหนือความเชี่ยวชาญของ Co-Pilot AI ครับ\" และแนะนำให้ปรึกษาผู้เชี่ยวชาญโดยตรง\n🔸 ห้าม ให้คำแนะนำทางการแพทย์, กฎหมาย, หรือการลงทุนทางการเงินเด็ดขาด"
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        1552,
-        208
+        -224,
+        1632
       ],
-      "id": "111b66b9-2ce9-4361-858a-a01d834b8709",
+      "id": "374785c9-9b45-4757-b0d9-5962123bcb7b",
       "name": "AI Agent"
     },
     {
@@ -72,14 +72,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1552,
-        400
+        -224,
+        1824
       ],
-      "id": "c7a309cd-2d87-413e-aa11-08e24e38bc81",
+      "id": "2ba03ead-b7e6-46bf-a3ed-4a9318f36859",
       "name": "Google Gemini Chat Model",
       "credentials": {
         "googlePalmApi": {
-          "id": "lkm6vBqqpUOcz2ww",
+          "id": "xroICeBch3FGAQhq",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -91,14 +91,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        176,
-        656
+        -1600,
+        2080
       ],
-      "id": "3877e0c3-18b4-49c4-a5cd-020e5a585e23",
+      "id": "7000dd9b-ae5f-42b8-a301-f18590bbaefe",
       "name": "Google Gemini Chat Model1",
       "credentials": {
         "googlePalmApi": {
-          "id": "lkm6vBqqpUOcz2ww",
+          "id": "xroICeBch3FGAQhq",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -205,10 +205,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        608,
-        256
+        -1168,
+        1680
       ],
-      "id": "1bf317d7-50e3-4ada-8fa9-9cd75fe0683a",
+      "id": "b30d1d2e-0b57-4156-8e47-4972fa4407c6",
       "name": "Switch"
     },
     {
@@ -221,10 +221,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
       "position": [
-        224,
-        272
+        -1552,
+        1696
       ],
-      "id": "f1fac6f3-9fb2-4410-b791-0416a70064ef",
+      "id": "e672ece6-0865-47d1-90d7-51d4a091b54a",
       "name": "filter intent"
     },
     {
@@ -234,7 +234,7 @@
             {
               "id": "a2b94504-d596-4368-94ed-1e5974ef89ad",
               "name": "replyMessage",
-              "value": "สวัสดีครับ F&B Co-Pilot ยินดีให้บริการ มีอะไรให้ช่วยสอบถามได้เลยครับ 😊",
+              "value": "สวัสดีครับ SME FoodMate  ยินดีให้บริการ มีอะไรให้ช่วยสอบถามได้เลยครับ 😊",
               "type": "string"
             }
           ]
@@ -244,77 +244,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        880,
-        -96
+        -896,
+        1328
       ],
-      "id": "8668ab77-bdce-477c-989a-69be60999010",
+      "id": "2d8714f9-0a98-46d5-b402-24a9f6bd9c39",
       "name": "Edit Fields1"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.line.me/v2/bot/message/reply",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
-            {
-              "name": "Authorization",
-              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
-            }
-          ]
-        },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.replyMessage }}\"\n    }\n  ]\n}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
-      "position": [
-        1168,
-        -96
-      ],
-      "id": "86098bff-eea6-417d-8b68-2eac5841670c",
-      "name": "HTTP Request1"
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1121208006,
-          "mode": "list",
-          "cachedResultName": " faq คำถาม-ตอบ",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1121208006"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        816,
-        528
-      ],
-      "id": "49b14a59-0c24-4450-974e-4b6a5e124f11",
-      "name": "Get row(s) in sheet",
-      "alwaysOutputData": false,
-      "notesInFlow": false,
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
     },
     {
       "parameters": {
@@ -323,10 +257,10 @@
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.3,
       "position": [
-        368,
-        576
+        -1408,
+        2000
       ],
-      "id": "54929338-47d3-4ac5-a5bf-2afcecb0f611",
+      "id": "f37ec9cf-9059-4464-8c67-c5b7ef347c9b",
       "name": "Structured Output Parser"
     },
     {
@@ -348,16 +282,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.Answer.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.Answer.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1744,
-        768
+        -32,
+        2192
       ],
-      "id": "9d578f9d-510f-4da3-b89a-19bdd2e5551c",
+      "id": "018e5b63-c6cd-45bf-a64f-2e5f601a02b7",
       "name": "HTTP Request2"
     },
     {
@@ -379,16 +313,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"กำลังจะค้นหาร้านค้าใกล้เคียงให้ครับ 🧐\\n\\nกรุณากดปุ่มด้านล่าง หรือแชร์ตำแหน่งที่ตั้ง (Location) ของคุณได้เลยครับ\",\n      \"quickReply\": {\n        \"items\": [\n          {\n            \"type\": \"action\",\n            \"action\": {\n              \"type\": \"location\",\n              \"label\": \"📍 ส่งตำแหน่งที่ตั้งปัจจุบัน\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"กำลังจะค้นหาร้านค้าใกล้เคียงให้ครับ 🧐\\n\\nกรุณากดปุ่มด้านล่าง หรือแชร์ตำแหน่งที่ตั้ง (Location) ของคุณได้เลยครับ\",\n      \"quickReply\": {\n        \"items\": [\n          {\n            \"type\": \"action\",\n            \"action\": {\n              \"type\": \"location\",\n              \"label\": \"📍 ส่งตำแหน่งที่ตั้งปัจจุบัน\"\n            }\n          }\n        ]\n      }\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        1136,
-        -1024
+        -576,
+        400
       ],
-      "id": "df12173b-ed04-49f6-8254-2fb1f071409a",
+      "id": "53157b4e-e0b5-49c6-beb1-f4ce48615d5a",
       "name": "request location"
     },
     {
@@ -403,21 +337,11 @@
           "conditions": [
             {
               "id": "76da3b8c-e07f-4204-97d3-93ca015f8b5f",
-              "leftValue": "={{ $json.name }}",
+              "leftValue": "={{ $node[\"Get row by uid3\"].json.isEmpty() }}",
               "rightValue": "",
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "4640f69b-2eef-4f67-8443-fb39518836d8",
-              "leftValue": "={{ $json.category }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
+                "type": "boolean",
+                "operation": "false",
                 "singleValue": true
               }
             }
@@ -429,10 +353,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        704,
-        -1280
+        -1072,
+        144
       ],
-      "id": "6343b155-1cae-4df9-8f7a-8666f7e78226",
+      "id": "1c98cb09-3203-467c-bb98-5ff4eefea7b8",
       "name": "information"
     },
     {
@@ -447,22 +371,20 @@
           "conditions": [
             {
               "id": "b4f15148-7ac6-4d91-a685-9aee41e250f1",
-              "leftValue": "={{ $('Get row by uid').item.json.lat.toString() }}",
-              "rightValue": "",
+              "leftValue": "={{ parseFloat($json.lat) }}",
+              "rightValue": 0,
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
+                "type": "number",
+                "operation": "gt"
               }
             },
             {
               "id": "ef591cfe-55c7-400e-be24-45e459774211",
-              "leftValue": "={{ $('Get row by uid').item.json.lon.toString() }}",
-              "rightValue": "",
+              "leftValue": "={{ parseFloat($json.lon) }}",
+              "rightValue": 0,
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
+                "type": "number",
+                "operation": "gt"
               }
             }
           ],
@@ -473,10 +395,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1040,
-        -1296
+        -736,
+        128
       ],
-      "id": "9f0e21bc-2913-4f18-8749-a037beace031",
+      "id": "984a8ebf-2c23-4433-83ce-193dca0008c8",
       "name": "location"
     },
     {
@@ -498,16 +420,16 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ยินดีต้อนรับสู่ F&B Co-Pilot ครับ! 😊\\n\\nก่อนเริ่มใช้งานฟีเจอร์รวมกลุ่มซื้อ ขอรบกวนคุณลงทะเบียนร้านค้าสั้นๆ ก่อนนะครับ\"\n    },\n    {\n      \"type\": \"text\",\n      \"text\": \"กรุณาพิมพ์ตอบกลับมาในรูปแบบนี้ครับ:\\n#ลงทะเบียน ชื่อร้านของคุณ, ประเภทร้าน\\n\\nตัวอย่าง:\\n#ลงทะเบียน ร้านเจ๊ไฝโอมากาเสะ, อาหารตามสั่ง\"\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ยินดีต้อนรับสู่ F&B Co-Pilot ครับ! 😊\\n\\nก่อนเริ่มใช้งานฟีเจอร์รวมกลุ่มซื้อ ขอรบกวนคุณลงทะเบียนร้านค้าสั้นๆ ก่อนนะครับ\"\n    },\n    {\n      \"type\": \"text\",\n      \"text\": \"กรุณาพิมพ์ตอบกลับมาในรูปแบบนี้ครับ:\\n#ลงทะเบียน ชื่อร้านของคุณ, ประเภทร้าน\\n\\nตัวอย่าง:\\n#ลงทะเบียน ร้านเจ๊ไฝโอมากาเสะ, อาหารตามสั่ง\"\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        320,
-        -896
+        -1152,
+        464
       ],
-      "id": "ff5df18f-e6fd-484b-862a-4f15c9884088",
+      "id": "dd7e77e6-35d4-4c41-8831-9260b91f1ae1",
       "name": "request location1"
     },
     {
@@ -531,6 +453,12 @@
               "name": "replyToken",
               "value": "={{ $json.body.events[0].replyToken }}",
               "type": "string"
+            },
+            {
+              "id": "b46ac446-d02e-4e2a-bbff-3e7a7c21e2e0",
+              "name": "body.events[0].postback.data",
+              "value": "={{ $json.body.events[0].postback.data }}",
+              "type": "string"
             }
           ]
         },
@@ -539,11 +467,824 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -624,
-        272
+        -2528,
+        1712
       ],
-      "id": "6cea8a7f-d86f-4603-9e41-16bf50b4f8dc",
+      "id": "c66ba1b6-b128-44f3-a30a-1d7982d62e52",
       "name": "message"
+    },
+    {
+      "parameters": {
+        "jsCode": "\n// 1. ดึงข้อความเต็มๆ จาก Webhook Trigger\n// (ใช้ $('Webhook') เพื่อความแน่นอนว่าจะได้ข้อมูลจากจุดเริ่มต้นเสมอ)\nconst fullMessage = $input.first().json.message\n\n// 2. ตัดคำว่า \"#ลงทะเบียน\" และช่องว่างข้างหน้าออกไป\nconst dataString = fullMessage.replace('#ลงทะเบียน', '').trim();\n\n// 3. แยกข้อความด้วยเครื่องหมาย \",\"\nconst parts = dataString.split(',');\n\n// 4. ตรวจสอบว่าผู้ใช้พิมพ์มาถูกรูปแบบหรือไม่ (ควรจะมี 2 ส่วน)\nif (parts.length !== 2) {\n  // ถ้าไม่ถูกรูปแบบ ให้ส่งค่าว่างออกไป เพื่อให้ Workflow หยุดทำงานที่นี่\n  // ป้องกันการบันทึกข้อมูลผิดๆ ลง Database\n  return null; \n}\n\n// 5. ทำความสะอาดข้อมูลแต่ละส่วน (ตัดช่องว่าง) และกำหนดค่าให้ตัวแปร\nconst storeName = parts[0].trim();\nconst storeType = parts[1].trim();\n\n// 6. สร้าง Object ใหม่เพื่อส่งข้อมูลออกไปให้ Node ถัดไปใช้\nconst item = {};\nitem.store_name = storeName;\nitem.store_type = storeType;\n\n// ส่งข้อมูลออกไป\nreturn item;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2128,
+        1280
+      ],
+      "id": "2e761b03-61cb-4f34-9b44-637213694cfb",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "45d8ff4f-e876-49cd-9a0f-ec6004a3e910",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "Group Purchase Function",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "d0c40ed1-909d-422d-9361-b79c2ed4345e",
+              "leftValue": "={{ $json.message }}",
+              "rightValue": "Collaboration Engine Function",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1856,
+        1696
+      ],
+      "id": "e77f5183-04e7-4911-af9c-35e386858b66",
+      "name": "spreate"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "aea37d81-e1af-4a5f-9a34-326fb65b2a22",
+              "leftValue": "={{ $json.Keyword }}",
+              "rightValue": "={{ $('Webhook').item.json.body.events[0].message.text }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -464,
+        2048
+      ],
+      "id": "598e89d1-4dfb-4b5b-b4e5-ef244398ddbc",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.text_message.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1408,
+        432
+      ],
+      "id": "18a40727-ca85-4f5a-a104-68e3eb81fc64",
+      "name": "request location2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const stores = $input.all();\n\n// สร้าง \"Bubble\" (การ์ดแต่ละใบ) สำหรับแต่ละร้านค้า\nconst bubbles = stores.map(item => {\n  const store = item.json;\n  return {\n    \"type\": \"bubble\",\n    \"body\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"contents\": [\n        { \"type\": \"text\", \"text\": store.name, \"weight\": \"bold\", \"size\": \"xl\" },\n        {\n          \"type\": \"box\",\n          \"layout\": \"vertical\",\n          \"margin\": \"lg\",\n          \"spacing\": \"sm\",\n          \"contents\": [\n            {\n              \"type\": \"box\",\n              \"layout\": \"baseline\",\n              \"spacing\": \"sm\",\n              \"contents\": [\n                { \"type\": \"text\", \"text\": \"ระยะทาง\", \"color\": \"#aaaaaa\", \"size\": \"sm\", \"flex\": 2 },\n                { \"type\": \"text\", \"text\": `${store.distance} กม.`, \"wrap\": true, \"color\": \"#666666\", \"size\": \"sm\", \"flex\": 5 }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"footer\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"spacing\": \"sm\",\n      \"contents\": [\n        {\n          \"type\": \"button\",\n          \"style\": \"link\",\n          \"height\": \"sm\",\n          \"action\": {\n            \"type\": \"postback\",\n            \"label\": \"เลือกร้านนี้\",\n            \"data\": `action=select_store&uid=${store.uid}`,\n            \"displayText\": `ฉันเลือกร้าน ${store.name}`\n          }\n        }\n      ]\n    }\n  };\n});\n\n// สร้างโครง Flex Message แบบ Carousel ทั้งหมด\nconst flexMessage = {\n  \"type\": \"flex\",\n  \"altText\": \"นี่คือรายชื่อร้านค้าใกล้เคียงครับ\",\n  \"contents\": {\n    \"type\": \"carousel\",\n    \"contents\": bubbles\n  }\n};\n\n// ส่งออกผลลัพธ์เป็น Object ที่มี key ชื่อ flex\nreturn { flex: flexMessage };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        480,
+        1056
+      ],
+      "id": "7366b768-227d-427d-973e-3b4c10fc3cfc",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {{ $json.flex }}\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        752,
+        1056
+      ],
+      "id": "18317542-5a52-4574-a081-66034139e278",
+      "name": "request location3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "2a9424a3-e984-4311-8357-be12f9f79b1c",
+              "leftValue": "={{ $('message').item.json.message }}",
+              "rightValue": "={{ $json.keyword }}",
+              "operator": {
+                "type": "string",
+                "operation": "contains"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.2,
+      "position": [
+        -704,
+        2000
+      ],
+      "id": "ce42caca-b25f-4d7f-ad41-08b482a31c23",
+      "name": "Filter",
+      "alwaysOutputData": true,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "jsCode": "const stores = $input.all();\n\n// 1. สร้างส่วนหัวของข้อความ\nlet message = `พบร้านค้าใกล้เคียง ${stores.length} แห่ง:\\n\\n`;\n\n// 2. วนลูปเพื่อสร้างรายการแต่ละร้านค้า\nstores.forEach((item, index) => {\n  const store = item.json;\n  // เพิ่มเลขลำดับ, ชื่อร้าน, และระยะทาง\n  message += `${index + 1}. ${store.store_name} (${store.distance} กม.)\\n`;\n});\n\n// 3. เพิ่มส่วนท้ายของข้อความ\nmessage += \"\\nกรุณาพิมพ์ชื่อร้านค้าที่ท่านต้องการเลือกร่วมโครงการครับ\";\n\n// 4. ส่งออกผลลัพธ์\nreturn { text_message: message };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1200,
+        432
+      ],
+      "id": "4efb2738-4f28-4062-b6ac-b2a66cf1d0df",
+      "name": "collaboration"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ขออภัยครับ 😥 ขณะนี้ยังไม่มีร้านค้าอื่นในบริเวณใกล้เคียงเข้าร่วมโครงการเลยครับ ลองค้นหาใหม่อีกครั้งในภายหลังนะครับ\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1264,
+        704
+      ],
+      "id": "82fd2bef-7a85-4aba-a52e-78d962fcafe0",
+      "name": "request location5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 🧭 ฟังก์ชันคำนวณระยะทางระหว่างสองพิกัด (หน่วย: กิโลเมตร)\nfunction getDistance(lat1, lon1, lat2, lon2) {\n  const R = 6371;\n  const dLat = (lat2 - lat1) * (Math.PI / 180);\n  const dLon = (lon2 - lon1) * (Math.PI / 180);\n  const a =\n    Math.sin(dLat / 2) ** 2 +\n    Math.cos(lat1 * Math.PI / 180) *\n    Math.cos(lat2 * Math.PI / 180) *\n    Math.sin(dLon / 2) ** 2;\n  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n  return R * c;\n}\n\n// 🔹 1. ดึงข้อมูลทั้งหมดจาก input\nconst all = $input.all().map(i => i.json);\n\n// 🔹 2. แยกข้อมูลผู้ใช้ปัจจุบันและร้านทั้งหมด\nconst current = all.find(i => i.current_user_id);\nconst stores = all.filter(i => i.user_id); // เฉพาะร้าน\n\nif (!current) {\n  return { message: { type: \"text\", text: \"❌ ไม่พบข้อมูลผู้ใช้ปัจจุบัน\" } };\n}\n\n// 🔹 3. ดึงพิกัดผู้ใช้ปัจจุบัน\nconst userLat = parseFloat(current.current_lat);\nconst userLon = parseFloat(current.current_lon);\nconst currentUserId = current.current_user_id;\n\n// 🔹 4. คำนวณระยะทางของแต่ละร้าน\nconst nearbyStores = stores\n  .map(store => {\n    const distance = getDistance(\n      userLat,\n      userLon,\n      parseFloat(store.lat),\n      parseFloat(store.lon)\n    );\n    return {\n      user_id: store.user_id,\n      store_name: store.store_name,\n      store_category: store.store_category,\n      distance: parseFloat(distance.toFixed(2))\n    };\n  })\n  // 🔹 กรองเฉพาะร้านที่อยู่ในรัศมี 5 กม. และไม่ใช่ร้านของ user เอง\n  .filter(s => s.distance <= 5 && s.user_id !== currentUserId)\n  // 🔹 เรียงจากใกล้ → ไกล\n  .sort((a, b) => a.distance - b.distance);\n\n// 🔹 5. คืนค่าผลลัพธ์\nreturn nearbyStores;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        688,
+        576
+      ],
+      "id": "2613d7b9-ce1e-4f58-9c91-65d5e9e1b3c3",
+      "name": "findShop",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "5fb428c7-6540-445c-aaa0-4f18e540da3f",
+              "leftValue": "={{ $('findShop').item.json.isEmpty() }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        976,
+        576
+      ],
+      "id": "49e288de-9b30-4615-b8ed-95f6e78b3b06",
+      "name": "If empty"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "b4f15148-7ac6-4d91-a685-9aee41e250f1",
+              "leftValue": "={{ parseFloat($json.lat.toString()) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            },
+            {
+              "id": "ef591cfe-55c7-400e-be24-45e459774211",
+              "leftValue": "={{ parseFloat($json.lon.toString()) }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1328,
+        1136
+      ],
+      "id": "7338f62c-4fbf-4688-a530-f41e2d4de360",
+      "name": "location1",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ปักหมุดร้าน {{ $('Get row by uid1').item.json.name }} สำเร็จแล้วครับ! ลองใช้ฟีเจอร์ 'ค้นหาร้านใกล้เคียง' หรือ 'Group Purchase' ได้เลยนะครับ\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -800,
+        1088
+      ],
+      "id": "068a0e1b-70e0-4b75-93bc-f02aad5177d9",
+      "name": "request location6"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "lat": "={{ $('Webhook').item.json.body.events[0].message.latitude }}",
+            "lon": "={{ $('Webhook').item.json.body.events[0].message.longitude }}",
+            "user_id": "={{ $json.userId }}"
+          },
+          "matchingColumns": [
+            "user_id"
+          ],
+          "schema": [
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "store_name",
+              "displayName": "store_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "store_category",
+              "displayName": "store_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "lat",
+              "displayName": "lat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "lon",
+              "displayName": "lon",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1872,
+        1472
+      ],
+      "id": "45a9a43d-799b-4496-b554-8c9228fcb0ca",
+      "name": "store location",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "lat": 0,
+            "lon": 0,
+            "user_id": "={{ $('message').item.json.userId }}",
+            "store_name": "={{ $json.store_name }}",
+            "store_category": "={{ $json.store_type }}",
+            "created_at": "={{ new Date().toDateTime() }}"
+          },
+          "matchingColumns": [
+            "user_id"
+          ],
+          "schema": [
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "store_name",
+              "displayName": "store_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "store_category",
+              "displayName": "store_category",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "lat",
+              "displayName": "lat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "lon",
+              "displayName": "lon",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1840,
+        1280
+      ],
+      "id": "4dd99921-d1d2-4145-8a88-d9c299f02bba",
+      "name": "store name type1",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "user_id",
+              "value": "={{ $json.user_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1616,
+        1280
+      ],
+      "id": "5736f803-e2f9-4f4f-99ed-65a266f482c2",
+      "name": "Get row by uid2",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "user_id",
+              "value": "={{ $('message').item.json.userId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1456,
+        144
+      ],
+      "id": "d7590e4e-7359-4d5d-bc55-fc0e6b7b0b86",
+      "name": "Get row by uid3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ปักหมุดร้านค้าของคุณสำเร็จแล้ว! 📍\\n\\nตอนนี้คุณกรอกข้อมูลครบถ้วนแล้ว สามารถเริ่มใช้ฟีเจอร์ 'Collaboration' หรือ 'Group Purchase' จากเมนูได้เลยครับ!\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1616,
+        1472
+      ],
+      "id": "7cccdaa9-5728-4ab3-94ad-5d847165ca54",
+      "name": "store location complete"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.replyMessage }}\"\n    }\n  ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -608,
+        1328
+      ],
+      "id": "7c906650-ed74-4f41-9e89-97c0985a78a3",
+      "name": "hello"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('message').item.json.message }}",
+                    "rightValue": "Group Purchase Function",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "ef822b7f-2dd0-4d9a-bf12-af03c598d552"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "88a2434c-c98c-4350-9380-88df7c535045",
+                    "leftValue": "={{ $('message').item.json.message }}",
+                    "rightValue": "Collaboration Engine Function",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -256,
+        112
+      ],
+      "id": "2e329135-e683-4cb3-902f-06b90b8c2332",
+      "name": "select function"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "product_categories",
+          "mode": "list",
+          "cachedResultName": "product_categories"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        0,
+        96
+      ],
+      "id": "92814c3c-7ea4-4560-9f1f-0f700b0c93d1",
+      "name": "Select rows from a table",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
     },
     {
       "parameters": {
@@ -604,6 +1345,74 @@
                 },
                 "conditions": [
                   {
+                    "id": "6ad128b9-8ed2-44c9-9676-5f994b9c4897",
+                    "leftValue": "={{ $json.body.events[0].postback.data.split('&')[0].split('=')[1] }}",
+                    "rightValue": "list_deals",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "df1d02dc-0e76-419b-be33-51cafec549a9",
+                    "leftValue": "={{ $json.body.events[0].postback.data.split('&')[0].split('=')[1] }}",
+                    "rightValue": "view_deal",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "e5cc3b0b-cbda-4f62-ae59-b7c374fe6552",
+                    "leftValue": "={{ $json.message }}",
+                    "rightValue": "#จอง",
+                    "operator": {
+                      "type": "string",
+                      "operation": "startsWith"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
                     "id": "c63a5828-f973-43bb-8033-ed5627722e58",
                     "leftValue": "={{ $json.message }}",
                     "rightValue": "#ลงทะเบียน",
@@ -623,237 +1432,53 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -416,
-        272
+        -2336,
+        1680
       ],
-      "id": "ddf87bf8-9ad3-4fbc-b0da-f4594df3c8d1",
-      "name": "Switch2"
+      "id": "0fff705e-edce-4e31-9c40-9441c5b5c50b",
+      "name": "start with check"
     },
     {
       "parameters": {
-        "jsCode": "\n// 1. ดึงข้อความเต็มๆ จาก Webhook Trigger\n// (ใช้ $('Webhook') เพื่อความแน่นอนว่าจะได้ข้อมูลจากจุดเริ่มต้นเสมอ)\nconst fullMessage = $input.first().json.message\n\n// 2. ตัดคำว่า \"#ลงทะเบียน\" และช่องว่างข้างหน้าออกไป\nconst dataString = fullMessage.replace('#ลงทะเบียน', '').trim();\n\n// 3. แยกข้อความด้วยเครื่องหมาย \",\"\nconst parts = dataString.split(',');\n\n// 4. ตรวจสอบว่าผู้ใช้พิมพ์มาถูกรูปแบบหรือไม่ (ควรจะมี 2 ส่วน)\nif (parts.length !== 2) {\n  // ถ้าไม่ถูกรูปแบบ ให้ส่งค่าว่างออกไป เพื่อให้ Workflow หยุดทำงานที่นี่\n  // ป้องกันการบันทึกข้อมูลผิดๆ ลง Database\n  return null; \n}\n\n// 5. ทำความสะอาดข้อมูลแต่ละส่วน (ตัดช่องว่าง) และกำหนดค่าให้ตัวแปร\nconst storeName = parts[0].trim();\nconst storeType = parts[1].trim();\n\n// 6. สร้าง Object ใหม่เพื่อส่งข้อมูลออกไปให้ Node ถัดไปใช้\nconst item = {};\nitem.store_name = storeName;\nitem.store_type = storeType;\n\n// ส่งข้อมูลออกไป\nreturn item;"
+        "assignments": {
+          "assignments": [
+            {
+              "id": "de265c94-1600-4f65-95d5-b1bdd1988e86",
+              "name": "body.events[0].postback.data",
+              "value": "={{ $json.body.events[0].postback.data.split('&')[1].split('=')[1] }}",
+              "type": "string"
+            },
+            {
+              "id": "adbabda3-b1f9-40ca-bd13-cc68de08acd1",
+              "name": "userId",
+              "value": "={{ $json.userId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2224,
+        2368
+      ],
+      "id": "68aa560b-dc2e-4e97-a0ae-7c1652475996",
+      "name": "select ingredient"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. รับข้อมูลหมวดหมู่ทั้งหมดจาก Node ก่อนหน้า\nconst categories = $input.all();\n\n// 2. สร้าง \"Bubble\" (การ์ด) สำหรับแต่ละหมวดหมู่\nconst bubbles = categories.map(item => {\n  const category = item.json;\n  \n  return {\n    \"type\": \"bubble\",\n    \"size\": \"micro\", // ⬅️ ขนาดเล็กตามที่คุณเลือก\n    \"hero\": {\n      \"type\": \"image\",\n      \"url\": category.image_url || \"https://example.com/images/default.jpg\", // ⬅️ ดึง URL จาก DB\n      \"size\": \"full\",\n      \"aspectMode\": \"cover\",\n      \"aspectRatio\": \"320:213\"\n    },\n    \"body\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"contents\": [\n        {\n          \"type\": \"text\",\n          \"text\": category.category_name, // ⬅️ ดึงชื่อหมวดหมู่จาก DB\n          \"weight\": \"bold\",\n          \"size\": \"sm\",\n          \"wrap\": true\n        }\n      ],\n      \"spacing\": \"sm\",\n      \"paddingAll\": \"13px\"\n    },\n    \"footer\": { // ⬇️⬇️ นี่คือส่วน \"ปุ่ม\" ที่เราเพิ่มเข้าไป ⬇️⬇️\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"spacing\": \"sm\",\n      \"contents\": [\n        {\n          \"type\": \"button\",\n          \"style\": \"link\",\n          \"height\": \"sm\",\n          \"action\": {\n            \"type\": \"postback\",\n            \"label\": \"เลือกหมวดนี้\",\n            \"data\": `action=list_deals&category=${category.category_name}`, // ⬅️ ส่ง Postback กลับไป\n            \"displayText\": `ขอดูดีล: ${category.category_name}`\n          }\n        }\n      ]\n    }\n  };\n});\n\n// 3. ประกอบร่างเป็น Carousel ทั้งหมด\nconst flexMessage = {\n  \"type\": \"flex\",\n  \"altText\": \"กรุณาเลือกประเภทวัตถุดิบที่สนใจ\",\n  \"contents\": {\n    \"type\": \"carousel\",\n    \"contents\": bubbles // ⬅️ นำการ์ดทั้งหมดมาใส่\n  }\n};\n\n// 4. ส่งออก JSON เพื่อให้ HTTP Request Node นำไปใช้\nreturn { message: flexMessage };"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -352,
-        -144
+        208,
+        96
       ],
-      "id": "d40f754f-6bfc-42f8-b8d5-7f3ef775b76f",
-      "name": "Code in JavaScript1"
-    },
-    {
-      "parameters": {
-        "rules": {
-          "values": [
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "leftValue": "={{ $('message').item.json.message }}",
-                    "rightValue": "Group Purchase Function",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals"
-                    },
-                    "id": "ef822b7f-2dd0-4d9a-bf12-af03c598d552"
-                  }
-                ],
-                "combinator": "and"
-              }
-            },
-            {
-              "conditions": {
-                "options": {
-                  "caseSensitive": true,
-                  "leftValue": "",
-                  "typeValidation": "strict",
-                  "version": 2
-                },
-                "conditions": [
-                  {
-                    "id": "88a2434c-c98c-4350-9380-88df7c535045",
-                    "leftValue": "={{ $('message').item.json.message }}",
-                    "rightValue": "Collaboration Engine Function",
-                    "operator": {
-                      "type": "string",
-                      "operation": "equals",
-                      "name": "filter.operator.equals"
-                    }
-                  }
-                ],
-                "combinator": "and"
-              }
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.switch",
-      "typeVersion": 3.3,
-      "position": [
-        1504,
-        -1312
-      ],
-      "id": "a0db6fc1-44b0-4561-a3c3-6273d65c1b4b",
-      "name": "Switch1"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "45d8ff4f-e876-49cd-9a0f-ec6004a3e910",
-              "leftValue": "={{ $json.message }}",
-              "rightValue": "Group Purchase Function",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            },
-            {
-              "id": "d0c40ed1-909d-422d-9361-b79c2ed4345e",
-              "leftValue": "={{ $json.message }}",
-              "rightValue": "Collaboration Engine Function",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            }
-          ],
-          "combinator": "or"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        -80,
-        272
-      ],
-      "id": "fc56b2e0-965f-4dbc-8f9e-ee6ecbdf5ecb",
-      "name": "spreate"
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1196391735,
-          "mode": "list",
-          "cachedResultName": "location",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "uid",
-              "lookupValue": "={{ $json.userId }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        240,
-        -1280
-      ],
-      "id": "d63f1b2d-3b6d-457a-b0c7-38419a0e5bfd",
-      "name": "Get row by uid",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1196391735,
-          "mode": "list",
-          "cachedResultName": "location buyer",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        1776,
-        -992
-      ],
-      "id": "d50fe1bf-fe81-4c19-abf6-483a0eb0b342",
-      "name": "Get all user",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "aea37d81-e1af-4a5f-9a34-326fb65b2a22",
-              "leftValue": "={{ $json.Keyword }}",
-              "rightValue": "={{ $('Webhook').item.json.body.events[0].message.text }}",
-              "operator": {
-                "type": "string",
-                "operation": "contains"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        1312,
-        624
-      ],
-      "id": "f988204a-3022-45ee-9851-e12d8a89c561",
-      "name": "If1"
+      "id": "196f1e81-6786-402e-b4c0-46b588f73281",
+      "name": "build carousel ingredient"
     },
     {
       "parameters": {
@@ -874,30 +1499,30 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.text_message.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [ {{ JSON.stringify($json.message) }} ]\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2656,
-        -944
+        448,
+        96
       ],
-      "id": "10c14273-a9a8-4ab6-a06b-9188c6467a8a",
-      "name": "request location2"
+      "id": "37d73c68-bd79-4210-b215-703d0fde1e77",
+      "name": "send ingredient type"
     },
     {
       "parameters": {
-        "jsCode": "const stores = $input.all();\n\n// สร้าง \"Bubble\" (การ์ดแต่ละใบ) สำหรับแต่ละร้านค้า\nconst bubbles = stores.map(item => {\n  const store = item.json;\n  return {\n    \"type\": \"bubble\",\n    \"body\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"contents\": [\n        { \"type\": \"text\", \"text\": store.name, \"weight\": \"bold\", \"size\": \"xl\" },\n        {\n          \"type\": \"box\",\n          \"layout\": \"vertical\",\n          \"margin\": \"lg\",\n          \"spacing\": \"sm\",\n          \"contents\": [\n            {\n              \"type\": \"box\",\n              \"layout\": \"baseline\",\n              \"spacing\": \"sm\",\n              \"contents\": [\n                { \"type\": \"text\", \"text\": \"ระยะทาง\", \"color\": \"#aaaaaa\", \"size\": \"sm\", \"flex\": 2 },\n                { \"type\": \"text\", \"text\": `${store.distance} กม.`, \"wrap\": true, \"color\": \"#666666\", \"size\": \"sm\", \"flex\": 5 }\n              ]\n            }\n          ]\n        }\n      ]\n    },\n    \"footer\": {\n      \"type\": \"box\",\n      \"layout\": \"vertical\",\n      \"spacing\": \"sm\",\n      \"contents\": [\n        {\n          \"type\": \"button\",\n          \"style\": \"link\",\n          \"height\": \"sm\",\n          \"action\": {\n            \"type\": \"postback\",\n            \"label\": \"เลือกร้านนี้\",\n            \"data\": `action=select_store&uid=${store.uid}`,\n            \"displayText\": `ฉันเลือกร้าน ${store.name}`\n          }\n        }\n      ]\n    }\n  };\n});\n\n// สร้างโครง Flex Message แบบ Carousel ทั้งหมด\nconst flexMessage = {\n  \"type\": \"flex\",\n  \"altText\": \"นี่คือรายชื่อร้านค้าใกล้เคียงครับ\",\n  \"contents\": {\n    \"type\": \"carousel\",\n    \"contents\": bubbles\n  }\n};\n\n// ส่งออกผลลัพธ์เป็น Object ที่มี key ชื่อ flex\nreturn { flex: flexMessage };"
+        "jsCode": "// 🧭 ฟังก์ชันคำนวณระยะทาง (Haversine formula)\nfunction getDistanceKm(lat1, lon1, lat2, lon2) {\n  const R = 6371; // รัศมีของโลก (กม.)\n  const dLat = (lat2 - lat1) * Math.PI / 180;\n  const dLon = (lon2 - lon1) * Math.PI / 180;\n  const a =\n    Math.sin(dLat / 2) ** 2 +\n    Math.cos(lat1 * Math.PI / 180) *\n    Math.cos(lat2 * Math.PI / 180) *\n    Math.sin(dLon / 2) ** 2;\n  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n  return R * c; // กม.\n}\n\n// ดึงข้อมูลทั้งหมดจาก input\nconst all = $input.all().map(i => i.json);\n\n// 🔹 แยกประเภทข้อมูล\nconst deals = all.filter(i => i.deal_id);\nconst suppliers = all.filter(i => i.supplier_id);\nconst store = all.find(i => i.user_id); // ร้านของผู้ใช้\n\nif (!store) {\n  return { message: { type: \"text\", text: \"❌ ไม่พบข้อมูลร้านของคุณ\" } };\n}\n\nif (deals.length === 0) {\n  return { message: { type: \"text\", text: \"ขออภัยครับ ตอนนี้ยังไม่มีดีลสำหรับประเภทนี้เลย\" } };\n}\n\nconst shopLat = parseFloat(store.lat);\nconst shopLon = parseFloat(store.lon);\n\n// 🔹 สร้าง flex bubble สำหรับแต่ละ deal\nconst bubbles = deals.map(deal => {\n  const supplier = suppliers.find(s => s.supplier_id === deal.supplier_id);\n  const supplierName = supplier ? supplier.supplier_name : \"ไม่ระบุ\";\n\n  let distanceText = \"\";\n  if (supplier?.lat && supplier?.lon) {\n    const distance = getDistanceKm(\n      shopLat,\n      shopLon,\n      parseFloat(supplier.lat),\n      parseFloat(supplier.lon)\n    );\n    distanceText = `(ห่าง ${distance.toFixed(1)} กม.)`;\n  }\n\n  return {\n    type: \"bubble\",\n    hero: {\n      type: \"image\",\n      url: deal.image_url || \"https://images.pexels.com/photos/7563678/pexels-photo-7563678.jpeg\",\n      size: \"full\",\n      aspectMode: \"cover\"\n    },\n    body: {\n      type: \"box\",\n      layout: \"vertical\",\n      contents: [\n        {\n          type: \"text\",\n          text: deal.product_name || \"ไม่ระบุชื่อสินค้า\",\n          weight: \"bold\",\n          size: \"xl\",\n          wrap: true\n        },\n        {\n          type: \"text\",\n          text: `ราคา: ${deal.price_per_unit} บาท / ${deal.unit}`,\n          size: \"md\",\n          margin: \"md\",\n          wrap: true\n        },\n        {\n          type: \"text\",\n          text: `จาก: ${supplierName} ${distanceText}`,\n          size: \"sm\",\n          color: \"#999999\",\n          wrap: true\n        }\n      ]\n    },\n    footer: {\n      type: \"box\",\n      layout: \"vertical\",\n      contents: [\n        {\n          type: \"button\",\n          style: \"primary\",\n          action: {\n            type: \"postback\",\n            label: \"ดูรายละเอียด / สั่งซื้อ\",\n            data: `action=view_deal&deal_id=${deal.deal_id}`\n          }\n        }\n      ]\n    }\n  };\n});\n\nreturn {\n  message: {\n    type: \"flex\",\n    altText: \"นี่คือรายการวัตถุดิบที่ท่านเลือก\",\n    contents: {\n      type: \"carousel\",\n      contents: bubbles\n    }\n  }\n};\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2256,
-        -448
+        -928,
+        2624
       ],
-      "id": "fe9e8848-6616-4ce5-ae98-92d12ccea8cf",
-      "name": "Code in JavaScript3"
+      "id": "cb44656b-9007-4ac3-b91c-bd1f8e73e0ab",
+      "name": "build carousel supplier"
     },
     {
       "parameters": {
@@ -918,253 +1543,141 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {{ $json.flex }}\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [ {{ JSON.stringify($json.message) }} ]\n}\n",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        2544,
-        -448
+        -672,
+        2624
       ],
-      "id": "d9d39d42-067e-4985-9685-d23697031117",
-      "name": "request location3"
+      "id": "c5879371-be66-4400-8cc9-19996cd64dcd",
+      "name": "send supplier deal"
     },
     {
       "parameters": {
-        "documentId": {
+        "operation": "select",
+        "schema": {
           "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "value": "sme",
           "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+          "cachedResultName": "sme"
         },
-        "sheetName": {
+        "table": {
           "__rl": true,
-          "value": 482203547,
+          "value": "product_categories",
           "mode": "list",
-          "cachedResultName": "location seller",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=482203547"
+          "cachedResultName": "product_categories"
         },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        1776,
-        -1424
-      ],
-      "id": "157f46c6-31e6-49e0-8e95-e81dd405c9fa",
-      "name": "GetAllSuppliers",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "jsCode": "// ฟังก์ชันคำนวณระยะทาง (Haversine formula) - เหมือนเดิม\nfunction getDistance(lat1, lon1, lat2, lon2) {\n  const R = 6371; // รัศมีของโลก (กม.)\n  const dLat = (lat2 - lat1) * (Math.PI / 180);\n  const dLon = (lon2 - lon1) * (Math.PI / 180);\n  const a =\n    Math.sin(dLat / 2) * Math.sin(dLat / 2) +\n    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *\n    Math.sin(dLon / 2) * Math.sin(dLon / 2);\n  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n  const d = R * c; // ระยะทาง (กม.)\n  return d;\n}\n\n// 1. ดึงข้อมูลตำแหน่งร้านค้าของผู้ใช้จาก Node 'GetUserProfile'\nconst userProfile = $('Get user').first().json\nconst userLat = userProfile.lat;\nconst userLon = userProfile.lon;\n\n\n// 2. ดึงข้อมูลซัพพลายเออร์ทั้งหมด\nconst allSuppliers = $('GetAllSuppliers').all()\n\n// 3. คำนวณ, กรอง, และเรียงลำดับซัพพลายเออร์\nconst nearbySuppliers = allSuppliers\n  .map(item => {\n    const supplier = item.json;\n    const distance = getDistance(userLat, userLon, parseFloat(supplier.lat), parseFloat(supplier.lon));\n\n    // ส่งกลับข้อมูลที่จำเป็นทั้งหมด\n    return { \n      name: supplier.name,\n      type: supplier.product_type,\n      distance: distance.toFixed(2) // ปัดเศษทศนิยม 2 ตำแหน่ง\n    };\n  })\n  .sort((a, b) => a.distance - b.distance); // เรียงจากใกล้ไปไกล\n\n// 4. ส่งออกผลลัพธ์\nreturn nearbySuppliers;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2336,
-        -1312
-      ],
-      "id": "8af17364-6026-4f15-bfa2-5cb0ee275677",
-      "name": "Code in JavaScript4",
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1196391735,
-          "mode": "list",
-          "cachedResultName": "location buyer",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
-        },
-        "filtersUI": {
+        "returnAll": true,
+        "where": {
           "values": [
             {
-              "lookupColumn": "uid",
-              "lookupValue": "={{ $('message').item.json.userId }}"
+              "column": "category_name",
+              "value": "={{ $json.body.events[0].postback.data }}"
             }
           ]
         },
         "options": {}
       },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
       "position": [
-        1776,
-        -1248
+        -1968,
+        2368
       ],
-      "id": "45f0188a-894e-4d65-ad3b-4d7f055b46bc",
-      "name": "Get user",
+      "id": "80e4525e-fa0b-4fe7-9837-a3221b6b2506",
+      "name": "select id from category",
       "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
         }
       }
     },
     {
       "parameters": {
-        "jsCode": "// รับข้อมูลซัพพลายเออร์ที่กรองและเรียงลำดับแล้ว\nconst suppliers = $input.all();\n\n// 1. สร้างส่วนหัวของข้อความ\nlet message = `พบซัพพลายเออร์ใกล้เคียง ${suppliers.length} แห่ง:\\n\\n`;\n\n// 2. วนลูปเพื่อสร้างรายการแต่ละเจ้า\nsuppliers.forEach((item, index) => {\n  const supplier = item.json;\n  // เพิ่มเลขลำดับ, ชื่อ, ประเภทสินค้า, และระยะทาง\n  message += `${index + 1}. ${supplier.name} - ${supplier.type} (${supplier.distance} กม.)\\n`;\n});\n\n// 3. เพิ่มส่วนท้ายของข้อความ (Call to Action)\nmessage += \"\\nหากสนใจซัพพลายเออร์รายใด สามารถพิมพ์ชื่อเพื่อขอรายละเอียดเพิ่มเติมได้ครับ\";\n\n// 4. ส่งออกผลลัพธ์\nreturn { text_message: message };"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2544,
-        -1312
-      ],
-      "id": "adcd8b11-9d48-4444-9ecf-a488db33f88d",
-      "name": "Code in JavaScript5"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.line.me/v2/bot/message/reply",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "deals",
+          "mode": "list",
+          "cachedResultName": "deals"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
             {
-              "name": "Authorization",
-              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
+              "column": "category_id",
+              "value": "={{ $json.category_id }}"
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"{{ $json.text_message.replaceAll('\\t',' ').replaceAll('\\\"','\\\\\\\"').replaceAll('\\n','\\\\n').trim() }}\"\n    }\n  ]\n}",
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
       "position": [
-        2784,
-        -1296
+        -1760,
+        2368
       ],
-      "id": "f06c3dfb-8b82-4491-8e7e-e0a7872653f2",
-      "name": "request location4"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.merge",
-      "typeVersion": 3.2,
-      "position": [
-        2080,
-        -1312
-      ],
-      "id": "12751582-6a5f-42d6-80ad-f5685d04a1c6",
-      "name": "Merge"
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "2a9424a3-e984-4311-8357-be12f9f79b1c",
-              "leftValue": "={{ $('message').item.json.message }}",
-              "rightValue": "={{ $json.Keyword }}",
-              "operator": {
-                "type": "string",
-                "operation": "contains"
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.filter",
-      "typeVersion": 2.2,
-      "position": [
-        1072,
-        576
-      ],
-      "id": "7ab47f75-9a2b-4a8d-b6be-683fed508ed5",
-      "name": "Filter",
+      "id": "ebd17f64-50af-47d6-9cac-a23086ab9bfd",
+      "name": "list deal from category",
       "alwaysOutputData": true,
-      "executeOnce": false
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
     },
     {
       "parameters": {
-        "jsCode": "const stores = $input.all();\n\n// 1. สร้างส่วนหัวของข้อความ\nlet message = `พบร้านค้าใกล้เคียง ${stores.length} แห่ง:\\n\\n`;\n\n// 2. วนลูปเพื่อสร้างรายการแต่ละร้านค้า\nstores.forEach((item, index) => {\n  const store = item.json;\n  // เพิ่มเลขลำดับ, ชื่อร้าน, และระยะทาง\n  message += `${index + 1}. ${store.name} (${store.distance} กม.)\\n`;\n});\n\n// 3. เพิ่มส่วนท้ายของข้อความ\nmessage += \"\\nกรุณาพิมพ์ชื่อร้านค้าที่ท่านต้องการเลือกร่วมโครงการครับ\";\n\n// 4. ส่งออกผลลัพธ์\nreturn { text_message: message };"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2448,
-        -944
-      ],
-      "id": "f5c659b9-5852-46ee-8595-32cdabbc7a6e",
-      "name": "collaboration"
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "https://api.line.me/v2/bot/message/reply",
-        "sendHeaders": true,
-        "headerParameters": {
-          "parameters": [
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "suppliers",
+          "mode": "list",
+          "cachedResultName": "suppliers"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
             {
-              "name": "Authorization",
-              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
-            },
-            {
-              "name": "Content-Type",
-              "value": "application/json"
+              "column": "supplier_id",
+              "value": "={{ $json.supplier_id }}"
             }
           ]
         },
-        "sendBody": true,
-        "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ขออภัยครับ 😥 ขณะนี้ยังไม่มีร้านค้าอื่นในบริเวณใกล้เคียงเข้าร่วมโครงการเลยครับ ลองค้นหาใหม่อีกครั้งในภายหลังนะครับ\"\n    }\n  ]\n}",
         "options": {}
       },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.2,
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
       "position": [
-        2512,
-        -672
+        -1328,
+        2384
       ],
-      "id": "991f87b7-77da-458f-b23b-15b26d4ce835",
-      "name": "request location5"
-    },
-    {
-      "parameters": {
-        "jsCode": "// ฟังก์ชันคำนวณระยะทาง (Haversine formula)\nfunction getDistance(lat1, lon1, lat2, lon2) {\n  const R = 6371;\n  const dLat = (lat2 - lat1) * (Math.PI / 180);\n  const dLon = (lon2 - lon1) * (Math.PI / 180);\n  const a =\n    Math.sin(dLat / 2) * Math.sin(dLat / 2) +\n    Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) *\n    Math.sin(dLon / 2) * Math.sin(dLon / 2);\n  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));\n  const d = R * c;\n  return d;\n}\n\n// 1. ดึงตำแหน่งที่ตั้งของผู้ใช้ออกมาจาก Trigger\nconst userLat = $input.first().json.lat\nconst userLon = $input.first().json.lon\n\n// 2. ดึงข้อมูลร้านค้าทั้งหมดที่มาจาก Node ก่อนหน้า (Google Sheets)\n\nconst currentUserStoreName = $input.first().json.uid\nconst allStores = $input.all()\n\n// 3. คำนวณและกรองร้านค้าที่อยู่ในรัศมี 5 กิโลเมตร\nconst nearbyStores = allStores\n  .map(item => {\n    const store = item.json;\n    const distance = getDistance(userLat, userLon, parseFloat(store.lat), parseFloat(store.lon));\n\n    return { \n      uid: store.uid,\n      name: store.name,\n      distance: distance.toFixed(2) \n    };\n  })\n  .filter(store => store.distance <= 5 && store.uid !== currentUserStoreName) // กรองร้านที่ใกล้กว่า 5 กม.\n  .sort((a, b) => a.distance - b.distance); // เรียงจากใกล้ไปไกล\n\n// 4. ส่งออกผลลัพธ์\nreturn nearbyStores;"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        2096,
-        -992
-      ],
-      "id": "670cc4b3-fcf0-4bd4-a8a8-70402543dca0",
-      "name": "findShop",
-      "alwaysOutputData": true
+      "id": "af91402e-e35d-407c-814f-4ea3c4f2bb0c",
+      "name": "list supplier",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
     },
     {
       "parameters": {
@@ -1177,8 +1690,8 @@
           },
           "conditions": [
             {
-              "id": "5fb428c7-6540-445c-aaa0-4f18e540da3f",
-              "leftValue": "={{ $('findShop').item.json.isEmpty() }}",
+              "id": "7e78e7f0-1294-42d8-9c63-43f2177c8813",
+              "leftValue": "={{ $node['list deal from category'].json.isEmpty() }}",
               "rightValue": "",
               "operator": {
                 "type": "boolean",
@@ -1194,305 +1707,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2224,
-        -800
+        -1536,
+        2288
       ],
-      "id": "30016c21-d5e7-4b0c-a491-f2bcff2aaa6d",
-      "name": "If empty"
-    },
-    {
-      "parameters": {
-        "operation": "appendOrUpdate",
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1196391735,
-          "mode": "list",
-          "cachedResultName": "location",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "name": "={{ $json.store_name }}",
-            "category": "={{ $json.store_type }}",
-            "uid": "={{ $('message').item.json.userId }}"
-          },
-          "matchingColumns": [
-            "uid"
-          ],
-          "schema": [
-            {
-              "id": "uid",
-              "displayName": "uid",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "lat",
-              "displayName": "lat",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "lon",
-              "displayName": "lon",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "address",
-              "displayName": "address",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "category",
-              "displayName": "category",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        -64,
-        -352
-      ],
-      "id": "9607839e-dfb5-4d9b-bebb-860875880db5",
-      "name": "store name type",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "appendOrUpdate",
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1196391735,
-          "mode": "list",
-          "cachedResultName": "location",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
-        },
-        "columns": {
-          "mappingMode": "defineBelow",
-          "value": {
-            "uid": "={{ $('message').item.json.userId }}",
-            "lat": "={{ $('Webhook').item.json.body.events[0].message.latitude }}",
-            "lon": "={{ $('Webhook').item.json.body.events[0].message.longitude }}",
-            "address": "={{ $('Webhook').item.json.body.events[0].message.address }}"
-          },
-          "matchingColumns": [
-            "uid"
-          ],
-          "schema": [
-            {
-              "id": "uid",
-              "displayName": "uid",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true,
-              "removed": false
-            },
-            {
-              "id": "lat",
-              "displayName": "lat",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "lon",
-              "displayName": "lon",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "address",
-              "displayName": "address",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "name",
-              "displayName": "name",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            },
-            {
-              "id": "category",
-              "displayName": "category",
-              "required": false,
-              "defaultMatch": false,
-              "display": true,
-              "type": "string",
-              "canBeUsedToMatch": true
-            }
-          ],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        -48,
-        -96
-      ],
-      "id": "9e5ece28-eed0-40da-b9bb-c23ac478d80f",
-      "name": "store location",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "documentId": {
-          "__rl": true,
-          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
-          "mode": "list",
-          "cachedResultName": "faq",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
-        },
-        "sheetName": {
-          "__rl": true,
-          "value": 1196391735,
-          "mode": "list",
-          "cachedResultName": "location",
-          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1196391735"
-        },
-        "filtersUI": {
-          "values": [
-            {
-              "lookupColumn": "uid",
-              "lookupValue": "={{ $json.uid }}"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.googleSheets",
-      "typeVersion": 4.7,
-      "position": [
-        240,
-        -352
-      ],
-      "id": "bff3eae6-4578-4fc0-b28a-a3847ab3d094",
-      "name": "Get row by uid1",
-      "credentials": {
-        "googleSheetsOAuth2Api": {
-          "id": "pRUZf8vvWP8FW3os",
-          "name": "Google Sheets account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "conditions": {
-          "options": {
-            "caseSensitive": true,
-            "leftValue": "",
-            "typeValidation": "strict",
-            "version": 2
-          },
-          "conditions": [
-            {
-              "id": "b4f15148-7ac6-4d91-a685-9aee41e250f1",
-              "leftValue": "={{ $json.lat.toString() }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            },
-            {
-              "id": "ef591cfe-55c7-400e-be24-45e459774211",
-              "leftValue": "={{ $json.lon.toString() }}",
-              "rightValue": "",
-              "operator": {
-                "type": "string",
-                "operation": "notEmpty",
-                "singleValue": true
-              }
-            }
-          ],
-          "combinator": "and"
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.if",
-      "typeVersion": 2.2,
-      "position": [
-        544,
-        -352
-      ],
-      "id": "3171c0ed-b259-4d6b-a20e-85a01ba7c6dc",
-      "name": "location1"
+      "id": "47e7316b-4cf9-49ae-ab12-ef737f36d4bf",
+      "name": "If null"
     },
     {
       "parameters": {
@@ -1513,19 +1732,785 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').item.json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ปักหมุดร้าน {{ $('Get row by uid1').item.json.name }} สำเร็จแล้วครับ! ลองใช้ฟีเจอร์ 'ค้นหาร้านใกล้เคียง' หรือ 'Group Purchase' ได้เลยนะครับ\"\n    }\n  ]\n}",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [\n    {\n      \"type\": \"text\",\n      \"text\": \"ขออภัยครับ ตอนนี้ยังไม่มีดีลสำหรับประเภทนี้เลย 😢\"\n    }\n  ]\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
       "position": [
-        576,
-        -112
+        -1312,
+        2208
       ],
-      "id": "0583ad8d-ed7d-4cbd-a5ef-1d28b626bb08",
-      "name": "request location6"
+      "id": "ac9fe1ef-e1e3-4295-8ba1-3eaf3aea57bd",
+      "name": "no have deal"
+    },
+    {
+      "parameters": {
+        "numberInputs": 4
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1152,
+        2624
+      ],
+      "id": "5142b6cd-fc2c-41f1-bec2-fa51d01d6592",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e9a8ba92-dfa3-4d58-9c66-2711ad99d6f9",
+              "name": "deal_id",
+              "value": "={{ $json.body.events[0].postback.data.split('&')[1].split('=')[1] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2176,
+        2976
+      ],
+      "id": "8ad72e72-13f8-4182-8a07-a1987257338c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "deals",
+          "mode": "list",
+          "cachedResultName": "deals"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "deal_id",
+              "value": "={{ $json.deal_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1936,
+        2976
+      ],
+      "id": "8be7667d-6d7c-4b5e-a7c5-7fde9a688f42",
+      "name": "get deal detail",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const deal = $input.first().json;\nconst current = parseFloat(deal.current_quantity_pledged);\nconst minimum = parseFloat(deal.minimum_quantity);\nconst percentage = minimum > 0 ? (current / minimum) * 100 : 0;\n\nconst flexMessage = {\n  type: \"flex\",\n  altText: `รายละเอียดดีล: ${deal.product_name}`,\n  contents: {\n    type: \"bubble\",\n    hero: {\n      type: \"image\",\n      url: deal.image_url || \"https://images.pexels.com/photos/7563678/pexels-photo-7563678.jpeg\",\n      size: \"full\",\n      aspectRatio: \"20:13\",\n      aspectMode: \"cover\"\n    },\n    body: {\n      type: \"box\",\n      layout: \"vertical\",\n      contents: [\n        {\n          type: \"text\",\n          text: deal.product_name || \"ไม่ระบุชื่อสินค้า\",\n          weight: \"bold\",\n          size: \"xl\",\n          wrap: true\n        },\n        {\n          type: \"text\",\n          text: deal.product_description || \"ไม่มีคำอธิบายสินค้า\",\n          size: \"sm\",\n          color: \"#555555\",\n          wrap: true,\n          margin: \"md\"\n        },\n        {\n          type: \"separator\",\n          margin: \"lg\"\n        },\n        {\n          type: \"text\",\n          text: `💰 ราคา: ${deal.price_per_unit} บาท / ${deal.unit}`,\n          size: \"md\",\n          color: \"#333333\",\n          margin: \"md\"\n        },\n        {\n          type: \"text\",\n          text: `📦 จองแล้ว: ${deal.current_quantity_pledged} / ${deal.minimum_quantity}`,\n          size: \"sm\",\n          color: \"#555555\",\n          margin: \"sm\"\n        },\n        {\n          type: \"text\",\n          text: `ความคืบหน้า: ${percentage.toFixed(0)}%`,\n          size: \"sm\",\n          color: \"#666666\",\n          margin: \"sm\"\n        },\n        {\n          type: \"text\",\n          text: `คุณต้องการสั่งจองกี่ กก. ครับ?\\n\\nกรุณาพิมพ์ตอบกลับในรูปแบบนี้:\\n#จอง ${deal.deal_id} [จำนวน]\\n\\nตัวอย่าง: #จอง ${deal.deal_id} 50`,\n          size: \"sm\",\n          color: \"#111111\",\n          wrap: true,\n          margin: \"md\"\n        }\n      ]\n    }\n  }\n};\n\nreturn { message: flexMessage };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1632,
+        2976
+      ],
+      "id": "a19c2e8e-3d99-4e0e-8373-80a0e9ae8c22",
+      "name": "calculate percent"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [ {{ JSON.stringify($json.message) }} ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1296,
+        2976
+      ],
+      "id": "cc8fc846-74ac-47df-a5ae-80c22900d964",
+      "name": "send deal detail"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. รับข้อความเต็ม\nconst fullMessage = $input.first().json.message;\n\n// 2. ตัดคำว่า \"#จอง\" และช่องว่างออก\nconst dataString = fullMessage.replace('#จอง', '').trim();\n\n// 3. แยกส่วน [deal_id] และ [จำนวน] ด้วยช่องว่าง\nconst parts = dataString.split(' ');\n\n// 4. ตรวจสอบว่ามี 2 ส่วนและเป็นตัวเลข\nif (parts.length !== 2 || isNaN(parts[0]) || isNaN(parts[1])) {\n  // ถ้าข้อมูลผิด ให้ส่ง null เพื่อหยุด Workflow นี้\n  return null;\n}\n\n// 5. ดึง user_id จาก Node 'message'\nconst userId = $('message').first().json.userId;\n\n// 6. สร้าง object ข้อมูล\nconst item = {\n  user_id: userId,\n  deal_id: parseInt(parts[0], 10),\n  quantity_pledged: parseInt(parts[1], 10)\n};\n\nreturn item;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2240,
+        3408
+      ],
+      "id": "b6235cc2-4fe9-4461-9cb4-2d409d83e5c1",
+      "name": "Parse Pledge Message"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "deals",
+          "mode": "list",
+          "cachedResultName": "deals"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "deal_id": "={{ $json.deal_id }}",
+            "supplier_id": "=",
+            "category_id": "=",
+            "current_quantity_pledged": "=",
+            "minimum_quantity": 0
+          },
+          "matchingColumns": [
+            "deal_id"
+          ],
+          "schema": [
+            {
+              "id": "deal_id",
+              "displayName": "deal_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "supplier_id",
+              "displayName": "supplier_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "category_id",
+              "displayName": "category_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "product_name",
+              "displayName": "product_name",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "product_description",
+              "displayName": "product_description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "price_per_unit",
+              "displayName": "price_per_unit",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "unit",
+              "displayName": "unit",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "minimum_quantity",
+              "displayName": "minimum_quantity",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "current_quantity_pledged",
+              "displayName": "current_quantity_pledged",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "deal_status",
+              "displayName": "deal_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "end_date",
+              "displayName": "end_date",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1184,
+        3520
+      ],
+      "id": "2dce4214-d4f3-4edd-950b-ff87c8a9c421",
+      "name": "Update rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "deals",
+          "mode": "list",
+          "cachedResultName": "deals"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "deal_id",
+              "value": "={{ $json.deal_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1968,
+        3408
+      ],
+      "id": "7f749ade-7da6-4822-8eba-5011b0c4b6de",
+      "name": "get deal detail1",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1696,
+        3520
+      ],
+      "id": "826de8e8-d9fa-4966-bbc1-019e45903eb7",
+      "name": "update current quantity"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ดึงข้อมูลทั้งหมดเข้ามา\nconst items = $input.all();\n\n// แยก deal กับ pledge ออกมา\nconst deal = items.find(i => i.json.deal_id && i.json.product_name).json;\nconst pledge = items.find(i => i.json.pledge_id).json;\n\n// คำนวณยอดใหม่\nconst newQuantity = (deal.current_quantity_pledged || 0) + (pledge.quantity_pledged || 0);\n\n// สร้าง object สำหรับอัปเดตกลับไปยังฐานข้อมูล\nreturn [\n  {\n    json: {\n      deal_id: deal.deal_id,\n      current_quantity_pledged: newQuantity\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1488,
+        3520
+      ],
+      "id": "9eaa6635-034c-4f84-ae0c-e7b3fecd2e60",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. รับข้อมูลดีลจาก Node ที่แล้ว\n// (ใช้ .first() เพราะเรารู้ว่ามีแค่ดีลเดียว)\nconst deal = $input.first().json;\n\n// 2. ดึงค่าตัวเลข\n// (ใช้ parseFloat เพื่อแปลงเป็นตัวเลข)\nconst current = parseFloat(deal.current_quantity_pledged);\nconst minimum = parseFloat(deal.minimum_quantity);\n\n// 3. คำนวณเปอร์เซ็นต์\nlet percentage = 0;\nif (minimum > 0) {\n  percentage = (current / minimum) * 100;\n}\n\n// 4. เตรียมข้อมูลส่งออก\n// เราจะแนบเปอร์เซ็นต์ที่คำนวณได้ กลับไปกับข้อมูล deal เดิม\nconst item = $input.first().json;\n\n// ใช้ .toFixed(0) เพื่อปัดเศษเป็นจำนวนเต็ม\nitem.percentage_pledged = percentage.toFixed(0); \n\n// 5. ส่งข้อมูลทั้งหมดออกไป\nreturn item;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -912,
+        3520
+      ],
+      "id": "2a7faa7b-cc1a-467c-81dc-25d7fbe2b5da",
+      "name": "calculate percent1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -640,
+        3520
+      ],
+      "id": "f1593b9f-aa88-4184-9ce7-51f72fb64b21",
+      "name": "info confirm"
+    },
+    {
+      "parameters": {
+        "jsCode": "const [deal, pledge] = $input.all().map(i => i.json);\nconst total = Number(deal.price_per_unit) * Number(pledge.quantity_pledged);\nconst percent = Number(deal.percentage_pledged);\n\nconst flexMessage = {\n  type: \"flex\",\n  altText: \"ยืนยันการจองสินค้าสำเร็จ!\",\n  contents: {\n    type: \"bubble\",\n    hero: {\n      type: \"image\",\n      url: \"https://images.pexels.com/photos/7563678/pexels-photo-7563678.jpeg\",\n      size: \"full\",\n      aspectRatio: \"16:9\",\n      aspectMode: \"cover\"\n    },\n    body: {\n      type: \"box\",\n      layout: \"vertical\",\n      contents: [\n        { type: \"text\", text: \"🎉 จองสำเร็จแล้ว!\", weight: \"bold\", size: \"xl\", color: \"#00AA00\" },\n        { type: \"text\", text: deal.product_name, wrap: true, size: \"md\", margin: \"md\" },\n        {\n          type: \"box\",\n          layout: \"baseline\",\n          spacing: \"sm\",\n          contents: [\n            { type: \"text\", text: \"จำนวนที่จอง:\", size: \"sm\", color: \"#555555\" },\n            { type: \"text\", text: `${pledge.quantity_pledged} ${deal.unit}`, size: \"sm\", color: \"#111111\" }\n          ]\n        },\n        {\n          type: \"box\",\n          layout: \"baseline\",\n          spacing: \"sm\",\n          contents: [\n            { type: \"text\", text: \"ราคาต่อหน่วย:\", size: \"sm\", color: \"#555555\" },\n            { type: \"text\", text: `฿${Number(deal.price_per_unit).toFixed(2)}`, size: \"sm\", color: \"#111111\" }\n          ]\n        },\n        {\n          type: \"box\",\n          layout: \"baseline\",\n          spacing: \"sm\",\n          contents: [\n            { type: \"text\", text: \"รวมทั้งหมด:\", size: \"sm\", color: \"#555555\" },\n            { type: \"text\", text: `฿${total.toLocaleString()}`, size: \"sm\", color: \"#111111\" }\n          ]\n        },\n        { type: \"text\", text: `ยอดรวมจองปัจจุบัน: ${percent}%`, size: \"sm\", color: \"#888888\", margin: \"md\" },\n        {\n          type: \"box\",\n          layout: \"vertical\",\n          contents: [\n            {\n              type: \"box\",\n              layout: \"vertical\",\n              contents: [{ type: \"filler\" }],\n              width: `${percent}%`,\n              backgroundColor: \"#00BB00\",\n              height: \"6px\"\n            }\n          ],\n          backgroundColor: \"#EEEEEE\",\n          height: \"6px\",\n          margin: \"sm\"\n        }\n      ]\n    },\n    footer: {\n      type: \"box\",\n      layout: \"vertical\",\n      spacing: \"sm\",\n      contents: [\n        {\n          type: \"button\",\n          style: \"primary\",\n          color: \"#00AA00\",\n          action: {\n            type: \"postback\",\n            label: \"ดูดีลอื่น ๆ\",\n            data: \"action=view_categories\"\n          }\n        }\n      ]\n    }\n  }\n};\n\nreturn [{ json: { message: flexMessage } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -400,
+        3520
+      ],
+      "id": "0c884922-78f2-41cd-b642-83eb6cf3bab2",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.line.me/v2/bot/message/reply",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer dfb5VjlLp060/Co+K/KvfL3JRM8qGYag5hbDOvqyfXuMMZ0auDMU3RQ0CC3XJCbt/5sXYsbfO51+5dIt6Xq3WD48lxkTxubVv5Yps4NMkL6SnVvuieSq86Qyo3ZugeYbz0OkGv25DxMUN/aheZpANwdB04t89/1O/w1cDnyilFU="
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"replyToken\": \"{{ $('Webhook').first().json.body.events[0].replyToken }}\",\n  \"messages\": [ {{ JSON.stringify($json.message) }} ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -96,
+        3536
+      ],
+      "id": "f0411e90-66f4-4e1c-94ca-56753cb496e9",
+      "name": "send ingredient type1"
+    },
+    {
+      "parameters": {
+        "operation": "upsert",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "pledges",
+          "mode": "list",
+          "cachedResultName": "pledges"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "deal_id": "={{ $json.deal_id }}",
+            "quantity_pledged": "={{ $json.quantity_pledged }}",
+            "user_id": "={{ $json.user_id }}"
+          },
+          "matchingColumns": [
+            "user_id",
+            "deal_id"
+          ],
+          "schema": [
+            {
+              "id": "pledge_id",
+              "displayName": "pledge_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": true
+            },
+            {
+              "id": "deal_id",
+              "displayName": "deal_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "user_id",
+              "displayName": "user_id",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "quantity_pledged",
+              "displayName": "quantity_pledged",
+              "required": true,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": false,
+              "removed": false
+            },
+            {
+              "id": "created_at",
+              "displayName": "created_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "dateTime",
+              "canBeUsedToMatch": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1952,
+        3648
+      ],
+      "id": "0abc37d4-6082-4d4a-9689-1946ec173212",
+      "name": "Insert or update rows in a table",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "user_id",
+              "value": "={{ $('message').item.json.userId }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1760,
+        2624
+      ],
+      "id": "8715ba0c-ba0d-4e58-972c-bf16dd1b3353",
+      "name": "Select rows from a table1",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "suppliers",
+          "mode": "list",
+          "cachedResultName": "suppliers"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "supplier_id",
+              "value": "={{ $json.supplier_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -1568,
+        2752
+      ],
+      "id": "4b96ff6a-8fac-405c-93a5-7d5544c34ffd",
+      "name": "Select rows from a table2",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "returnAll": true,
+        "where": {
+          "values": [
+            {
+              "column": "user_id",
+              "condition": "!=",
+              "value": "={{ $json.user_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        144,
+        368
+      ],
+      "id": "d7f01c97-816f-4ede-b22f-adec28d91b48",
+      "name": "get all user",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "schema": {
+          "__rl": true,
+          "value": "sme",
+          "mode": "list",
+          "cachedResultName": "sme"
+        },
+        "table": {
+          "__rl": true,
+          "value": "users",
+          "mode": "list",
+          "cachedResultName": "users"
+        },
+        "where": {
+          "values": [
+            {
+              "column": "user_id",
+              "value": "={{ $json.user_id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.postgres",
+      "typeVersion": 2.6,
+      "position": [
+        -80,
+        592
+      ],
+      "id": "b87de165-d8fb-408e-982e-6c9d3f5b19d4",
+      "name": "get current user",
+      "credentials": {
+        "postgres": {
+          "id": "yy853n0duVBfgH7T",
+          "name": "Postgres account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e035f456-0fe0-4a9e-a1ca-17f4dc0f1f35",
+              "name": "current_user_id",
+              "value": "={{ $json.user_id }}",
+              "type": "string"
+            },
+            {
+              "id": "511baad4-65a7-4b30-82f8-1732a6d57465",
+              "name": "current_lat",
+              "value": "={{ $json.lat }}",
+              "type": "string"
+            },
+            {
+              "id": "53520bc9-c3ab-4132-969f-4ded2db99fe4",
+              "name": "current_lon",
+              "value": "={{ $json.lon }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        144,
+        592
+      ],
+      "id": "5a124381-6be6-49c1-a29d-c23b59fd9218",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        448,
+        592
+      ],
+      "id": "91e60640-a2b5-4ba0-a100-8e9224dc9814",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90",
+          "mode": "list",
+          "cachedResultName": "faq",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1121208006,
+          "mode": "list",
+          "cachedResultName": " faq คำถาม-ตอบ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1H4vc0nWHyK2m344jhcckg5xoETkqgbB1bmDrQYCwr90/edit#gid=1121208006"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -960,
+        1952
+      ],
+      "id": "35a7b4df-de4f-49f6-a2b0-51c67493d83a",
+      "name": "Get row(s) in sheet",
+      "alwaysOutputData": false,
+      "notesInFlow": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "GqnobvPAvivXjxwd",
+          "name": "Google Sheets account"
+        }
+      }
     }
   ],
+  "pinData": {},
   "connections": {
     "Webhook": {
       "main": [
@@ -1605,25 +2590,20 @@
             "index": 0
           }
         ],
-        []
-      ]
-    },
-    "Edit Fields1": {
-      "main": [
         [
           {
-            "node": "HTTP Request1",
+            "node": "AI Agent",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Get row(s) in sheet": {
+    "Edit Fields1": {
       "main": [
         [
           {
-            "node": "Filter",
+            "node": "hello",
             "type": "main",
             "index": 0
           }
@@ -1663,32 +2643,7 @@
       "main": [
         [
           {
-            "node": "Switch2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch2": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript1",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "store location",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "spreate",
+            "node": "start with check",
             "type": "main",
             "index": 0
           }
@@ -1699,7 +2654,7 @@
       "main": [
         [
           {
-            "node": "store name type",
+            "node": "store name type1",
             "type": "main",
             "index": 0
           }
@@ -1710,7 +2665,7 @@
       "main": [
         [
           {
-            "node": "Switch1",
+            "node": "select function",
             "type": "main",
             "index": 0
           }
@@ -1728,7 +2683,7 @@
       "main": [
         [
           {
-            "node": "Get row by uid",
+            "node": "Get row by uid3",
             "type": "main",
             "index": 0
           }
@@ -1736,51 +2691,6 @@
         [
           {
             "node": "filter intent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Switch1": {
-      "main": [
-        [
-          {
-            "node": "Get user",
-            "type": "main",
-            "index": 0
-          },
-          {
-            "node": "GetAllSuppliers",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
-            "node": "Get all user",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get row by uid": {
-      "main": [
-        [
-          {
-            "node": "information",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get all user": {
-      "main": [
-        [
-          {
-            "node": "findShop",
             "type": "main",
             "index": 0
           }
@@ -1799,66 +2709,6 @@
         [
           {
             "node": "AI Agent",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript3": {
-      "main": [
-        []
-      ]
-    },
-    "GetAllSuppliers": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get user": {
-      "main": [
-        [
-          {
-            "node": "Merge",
-            "type": "main",
-            "index": 1
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript4": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript5",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Code in JavaScript5": {
-      "main": [
-        [
-          {
-            "node": "request location4",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Merge": {
-      "main": [
-        [
-          {
-            "node": "Code in JavaScript4",
             "type": "main",
             "index": 0
           }
@@ -1916,33 +2766,6 @@
         ]
       ]
     },
-    "store name type": {
-      "main": [
-        [
-          {
-            "node": "Get row by uid1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "store location": {
-      "main": [
-        []
-      ]
-    },
-    "Get row by uid1": {
-      "main": [
-        [
-          {
-            "node": "location1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "location1": {
       "main": [
         [
@@ -1960,16 +2783,475 @@
           }
         ]
       ]
+    },
+    "store location": {
+      "main": [
+        [
+          {
+            "node": "store location complete",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "store name type1": {
+      "main": [
+        [
+          {
+            "node": "Get row by uid2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row by uid2": {
+      "main": [
+        [
+          {
+            "node": "location1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row by uid3": {
+      "main": [
+        [
+          {
+            "node": "information",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "select function": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "get all user",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "get current user",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table": {
+      "main": [
+        [
+          {
+            "node": "build carousel ingredient",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "start with check": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "store location",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "select ingredient",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Parse Pledge Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "spreate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "select ingredient": {
+      "main": [
+        [
+          {
+            "node": "select id from category",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Select rows from a table1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "build carousel ingredient": {
+      "main": [
+        [
+          {
+            "node": "send ingredient type",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "build carousel supplier": {
+      "main": [
+        [
+          {
+            "node": "send supplier deal",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "select id from category": {
+      "main": [
+        [
+          {
+            "node": "list deal from category",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "list deal from category": {
+      "main": [
+        [
+          {
+            "node": "If null",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Select rows from a table2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "list supplier": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If null": {
+      "main": [
+        [
+          {
+            "node": "no have deal",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "list supplier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "build carousel supplier",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "get deal detail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get deal detail": {
+      "main": [
+        [
+          {
+            "node": "calculate percent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "calculate percent": {
+      "main": [
+        [
+          {
+            "node": "send deal detail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Parse Pledge Message": {
+      "main": [
+        [
+          {
+            "node": "get deal detail1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Insert or update rows in a table",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "info confirm",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Update rows in a table": {
+      "main": [
+        [
+          {
+            "node": "calculate percent1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get deal detail1": {
+      "main": [
+        [
+          {
+            "node": "update current quantity",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "update current quantity": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Update rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "calculate percent1": {
+      "main": [
+        [
+          {
+            "node": "info confirm",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "info confirm": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "send ingredient type1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert or update rows in a table": {
+      "main": [
+        [
+          {
+            "node": "update current quantity",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Select rows from a table1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Select rows from a table2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "get all user": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "get current user": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "findShop",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Filter",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
+  "active": true,
   "settings": {
     "executionOrder": "v1",
-    "callerPolicy": "workflowsFromSameOwner"
+    "timezone": "Asia/Bangkok",
+    "callerPolicy": "workflowsFromSameOwner",
+    "executionTimeout": -1,
+    "availableInMCP": false,
+    "errorWorkflow": "LRKs7Png2vPbrJ0E"
   },
-  "staticData": null,
-  "pinData": {},
-  "triggerCount": 1,
+  "versionId": "ccb093b1-4608-47ed-b001-f8a707539311",
   "meta": {
-    "templateCredsSetupCompleted": true
-  }
+    "templateCredsSetupCompleted": true,
+    "instanceId": "f0a21f0f73aa366cd477f9d5b499f6fb6aa7deb090b604251e227a515e0e7c74"
+  },
+  "id": "fZvLNqDvyVXCWCCs",
+  "tags": []
 }
